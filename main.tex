@@ -1,0 +1,699 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\title{Measure and Integration}
+\author{Zhikun Li}
+\date{}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\ucov}{\rightrightarrows}
+\newcommand{\mdec}{\searrow}
+\newcommand{\minc}{\nearrow}
+
+\newcommand{\infsum}{\sum\limits_{n=1}^\infty}
+\newcommand{\sumhinf}{\sum\limits_{h=1}^\infty}
+\newcommand{\sumiinf}{\sum\limits_{i=1}^\infty}
+\newcommand{\sumjinf}{\sum\limits_{j=1}^\infty}
+\newcommand{\sumkinf}{\sum\limits_{k=1}^\infty}
+\newcommand{\sumlinf}{\sum\limits_{l=1}^\infty}
+\newcommand{\summinf}{\sum\limits_{m=1}^\infty}
+\newcommand{\sumninf}{\sum\limits_{n=1}^\infty}
+\newcommand{\sumpinf}{\sum\limits_{p=1}^\infty}
+\newcommand{\sumrinf}{\sum\limits_{r=1}^\infty}
+\newcommand{\sumsinf}{\sum\limits_{s=1}^\infty}
+\newcommand{\sumtinf}{\sum\limits_{t=1}^\infty}
+
+\newcommand{\infcap}{\bigcap\limits_{n=1}^\infty}
+\newcommand{\caphinf}{\bigcap\limits_{h=1}^\infty}
+\newcommand{\capiinf}{\bigcap\limits_{i=1}^\infty}
+\newcommand{\capjinf}{\bigcap\limits_{j=1}^\infty}
+\newcommand{\capkinf}{\bigcap\limits_{k=1}^\infty}
+\newcommand{\caplinf}{\bigcap\limits_{l=1}^\infty}
+\newcommand{\capminf}{\bigcap\limits_{m=1}^\infty}
+\newcommand{\capninf}{\bigcap\limits_{n=1}^\infty}
+\newcommand{\cappinf}{\bigcap\limits_{p=1}^\infty}
+\newcommand{\caprinf}{\bigcap\limits_{r=1}^\infty}
+\newcommand{\capsinf}{\bigcap\limits_{s=1}^\infty}
+\newcommand{\captinf}{\bigcap\limits_{t=1}^\infty}
+
+\newcommand{\infcup}{\bigcup\limits_{n=1}^\infty}
+\newcommand{\cuphinf}{\bigcup\limits_{h=1}^\infty}
+\newcommand{\cupiinf}{\bigcup\limits_{i=1}^\infty}
+\newcommand{\cupjinf}{\bigcup\limits_{j=1}^\infty}
+\newcommand{\cupkinf}{\bigcup\limits_{k=1}^\infty}
+\newcommand{\cuplinf}{\bigcup\limits_{l=1}^\infty}
+\newcommand{\cupminf}{\bigcup\limits_{m=1}^\infty}
+\newcommand{\cupninf}{\bigcup\limits_{n=1}^\infty}
+\newcommand{\cuppinf}{\bigcup\limits_{p=1}^\infty}
+\newcommand{\cuprinf}{\bigcup\limits_{r=1}^\infty}
+\newcommand{\cupsinf}{\bigcup\limits_{s=1}^\infty}
+\newcommand{\cuptinf}{\bigcup\limits_{t=1}^\infty}
+
+\newcommand{\sumin}{\sum\limits_{i=1}^n}
+\newcommand{\sumjn}{\sum\limits_{j=1}^n}
+\newcommand{\sumkn}{\sum\limits_{k=1}^n}
+
+\newcommand{\cupin}{\bigcup\limits_{i=1}^n}
+\newcommand{\cupim}{\bigcup\limits_{i=1}^m}
+\newcommand{\cupik}{\bigcup\limits_{i=1}^k}
+\newcommand{\cupjn}{\bigcup\limits_{j=1}^n}
+\newcommand{\cupjm}{\bigcup\limits_{j=1}^m}
+\newcommand{\cupjk}{\bigcup\limits_{j=1}^k}
+\newcommand{\cupnk}{\bigcup\limits_{n=1}^k}
+\newcommand{\cupnm}{\bigcup\limits_{n=1}^m}
+\newcommand{\cupkn}{\bigcup\limits_{k=1}^n}
+\newcommand{\cupkm}{\bigcup\limits_{k=1}^m}
+
+\newcommand{\capin}{\bigcap\limits_{i=1}^n}
+\newcommand{\capim}{\bigcap\limits_{i=1}^m}
+\newcommand{\capik}{\bigcap\limits_{i=1}^k}
+\newcommand{\capjn}{\bigcap\limits_{j=1}^n}
+\newcommand{\capjm}{\bigcap\limits_{j=1}^m}
+\newcommand{\capjk}{\bigcap\limits_{j=1}^k}
+\newcommand{\capnk}{\bigcap\limits_{n=1}^k}
+\newcommand{\capnm}{\bigcap\limits_{n=1}^m}
+\newcommand{\capkn}{\bigcap\limits_{k=1}^n}
+\newcommand{\capkm}{\bigcap\limits_{k=1}^m}
+
+\newcommand{\bcsl}{\symbol{92}}
+\newcommand{\infprod}{\prod\limits_{n=1}^\infty}
+\newcommand{\limninf}{\lim\limits_{n\to\infty}}
+\newcommand{\limxinf}{\lim\limits_{x\to\infty}}
+\newcommand{\limkinf}{\lim\limits_{k\to\infty}}
+\newcommand{\limxx}{\lim_{x\to x_0}}
+\newcommand{\difx}{\dfrac{\mbox{d}}{\mbox{d}x}}
+\newcommand{\dift}{\dfrac{\mbox{d}}{\mbox{d}t}}
+\newcommand{\st}{\mbox{ s.t. }}
+\newcommand{\he}{\mbox{ and }}
+\newcommand{\theorem}{\textbf{Theorem:}}
+\newcommand{\clear}{\mbox{clearly}:}
+\newcommand{\trivial}{\mbox{Trivially: }}
+\newcommand{\wlg}{\mbox{ WLoG, let }}
+\newcommand{\diam}{\mbox{diam}}
+\newcommand{\0}{{\bf{0}}}
+\newcommand{\1}{{\bf{1}}}
+\newcommand{\esssup}{\mbox{ess}\sup\limits}
+\newcommand{\essinf}{\mbox{ess}\inf\limits}
+\newcommand{\alev}{\mbox{ a.e.}}
+\newcommand{\emset}{\emptyset}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\intab}{\int_a^b}
+\newcommand{\dintab}{\displaystyle\int_a^b}
+\newcommand{\dif}{\mbox{d}}
+\newcommand{\incto}{\nearrow}
+\newcommand{\decto}{\searrow}
+
+\begin{document}
+\maketitle
+\section*{Preface}
+The following Notes will include all the material covered in ``Measure, Integral and Probability" by Capinski and Kopp as well as ``Real Analysis" by Stein and Shakarchi.
+This set of notes aims at being concise, comprehensive, and clear, to act as a complete refresher for revision as well as a dictionary for theorems and proofs.
+\tableofcontents
+\clearpage
+\section{Motivation and Preliminaries}
+\subsection{Notation and Basic Set Theory}
+\subsubsection{Basic Set Theory}
+\null\hfill{See ``Classical Real Analysis Notes"}
+\subsubsection{Topological Properties of Sets in $\R$}
+\textbf{Definition: Open Set}
+
+$O\subset\R$ is open if for some open intervals $\{I_\alpha\}_{\alpha\in\Lambda}$, $O=\bigcup\limits_{\alpha\in\Lambda}I_\alpha$, where $\Lambda$ is some index set.
+
+Equivalently, $O\subset\R$ is open if for all $x \in O,$ there exists $\delta > 0$ such that $(x - \delta, x + \delta) \subset O.$
+
+Warm-up exercise: show these are indeed equivalent.
+
+\textbf{Definition: Continuity}\\
+$f:X\to\R$ is continuous if $\forall$ open sets $O\subset \R$ we have $f^{-1}(O)$ open.\\
+In more general metric spaces, this prevents boundary points of $f^{-1}(O)$ from being mapped to an interior point by not allowing the existence of boundary points in $f^{-1}(O)$.\\
+\textbf{Notation:} $\lim\sup_nx_n$, $\lim\inf_nx_n$\\
+These denote the upper limit and lower limit of $x_n$: if we define the sequences $y_n = \sup\{x_m: m \geq n\}$ and $z_n = \inf \{x_m: m \geq n\}$ then $y_n \xrightarrow{} \limsup{x_n}$ and $z_n \xrightarrow{} \liminf{x_n}.$
+\subsection{Limitations of the Riemann Integral}
+\textbf{Scope:} The Riemann integral is reliant on limits when dealing with unbounded functions\\
+\textbf{Dependence on Intervals:} Ugly domains and functions with very ``scattered" values can't be integrated, such as the indicator function of the rationals.\\
+\textbf{The Lack of Completeness:}\\ Integrable functions may converge to an unintegrable function.\\
+\textbf{Example:}
+$$f_n(x)=\begin{cases}
+    4n^2x&0\le x<\dfrac{1}{2n}\\[6pt]
+    4n-4n^2x&\dfrac{1}{2n}\le x<\dfrac{1}{n}\\[6pt]
+    0&\dfrac{1}{n}\le x\le1
+\end{cases}$$
+Continuous functions with convergent ``distances" may converge to a discontinuous function.\\
+\textbf{Example:}
+$$g_n(x)=\begin{cases}
+    0&0\le x\le\dfrac{1}{2}\\[6pt]
+    n\left(x-\dfrac{1}{2}\right)&\dfrac{1}{2}<x<\dfrac{1}{2}+\dfrac{1}{n}\\
+    1&\mbox{otherwise}
+\end{cases}$$
+The ``distance'' $dint_0^1|g_n(x)-g_m(x)|dx\to0$ as $m,n\to0$\\
+\null\hfill{Verify the above examples as an exercise}
+\clearpage
+\section{Measure}
+\subsection{Null Sets}
+\textbf{Definition: Length of intervals on $\R$}\\
+Clearly, we want to define the length of intervals as the difference between their two ends.
+$$\forall a,b\in\R,l([a,b])=l([a,b))=l((a,b])=l((a,b))=b-a$$
+$$\implies\forall a\in\R:l(\{a\})=l([a,a])=a-a-0\land l(\emptyset)=l((a,a))=a-a=0$$
+It is only natural for finite addition of length to hold.\\
+\textbf{Definition: Null Set}
+$$A\subset\R,\forall\varepsilon>0,\exists\{I_n\}_{n\in\N^+}\st A\subset\bigcup_{n=1}^\infty I_n\land\sum_{n=1}^\infty l(I_n)<\varepsilon$$
+\textbf{Corollary:} Restricting $I_n$ to be all in the form $(a,b)$ or all $[a,b]$ or $[a,b)$ or $(a,b]$ does not change the definition\\
+\textbf{Corollary:} Countable sets are null\\
+\textbf{Proof:}
+$$\forall\{x_n\}_{n\in\N^+},\forall\varepsilon>0,I_n:=\left(x_n-\frac{\varepsilon}{2^{n+2}},x_n+\frac{\varepsilon}{2^{n+2}}\right)\implies\sum_{n=1}^\infty l(I_n)=\frac{\varepsilon}{2}<\varepsilon$$
+\textbf{Theorem:} Countable unions of Null sets are Null\\
+\textbf{Proof:}\\
+Suppose $N=\bigcup\limits_{n=1}^\infty N_n\st\forall N_n$ is Null, then each $N_n$ has cover $\{I_{n,k}\}_{n\in\N^+}\st\sum\limits_{k=1}^\infty l(I_{n,k})<\dfrac{\varepsilon}{2^n}$\\
+Clearly, $\bigcup\limits_{n,k\in\N^+}I_{n,k}$ is a cover of $N$ and $\sum\limits_{n,k\in\N^+}l(I_{n,k})=\sum\limits_{n=1}^\infty\sum\limits_{k=1}^\infty l(I_{n,k})=\varepsilon$\\
+\textbf{Note:} Uncountable sets can be Null, such as the Cantor set. At each step of the Cantor set's construction, the total length of the covering decreases exponentially. 
+\subsection{Outer Measure}
+\textbf{Definition: Lebesgue Outer Measure}
+$$Z_A:=\left\{\sum_{n=1}^\infty l(I_n)\,\middle\vert\,A\subseteq\bigcup_{n=1}^\infty I_n\right\},\,m^*(A):=\inf Z_A$$
+Clearly, $\forall A\subset\R:m^*(A)\geq0$.\\
+When all the $\\sumninf l(I_n)$ in $Z_A$ diverge to $\infty$, we define $m^*(A)$ as $\infty$.\\
+$\forall a\in\R$, define $a+\infty$ as $\infty$, $\infty+\infty:=\infty$, $0\times\infty:=0$\\
+Clearly, $Z_A=[r,+\infty]$ or $Z_A=(r,+\infty]$ or $Z_A=[\infty,\infty]=\{\infty\}$, and $A$ is Null$\iff m^*(A)=0$\\
+\textbf{Proposition:}
+$A\subset B\implies m^*(A)\le m^*(B)$\\
+\textbf{Proof:}\\
+Clearly, $Z_B\subset Z_A\implies\inf Z_A\le\inf Z_B$\\
+\textbf{Theorem:} The outer measure of an interval equals its length$\equiv m^*(I)=l(I)$\\
+\textbf{Proof:}\\
+$I_1:=I,\forall n\geq2,I_n=[0,0]\implies\bigcup\limits_{n=1}^\infty I_n$ covers $I$, thus $m^*(I)\le l(I)$\\
+For bounded $I:\forall\varepsilon>0,\exists\{I_n\}\st\\sumninf l(I_n)\le m^*(I)+\dfrac{\varepsilon}{2}\land I\subset\infcup I_n$, let $a_n,b_n$ be the endpoints of $I_n$
+
+For bounded closed $I$:
+
+$J_n:=\left(a_n-\dfrac{\varepsilon}{2^{n+2}},b_n+\dfrac{\varepsilon}{2^{n+1}}\right)$, clearly, $\{J_n\}$ is an open cover of $I$, hence it has a finite subcover $\{J_n\}_{n=1}^m$.
+
+Clearly, the total length of this subcover is greater than the length of $I\implies$\\
+$$l(I)\le\sum\limits_{n=1}^m l(J_n)\le\\sumninf l(J_n)=\\sumninf l(I_n)+\dfrac{\varepsilon}{2}\le m^*(I)+\dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}=m^*(I)+\varepsilon$$
+
+For bounded non-closed $I$, suppose $I=(a,b),\forall\varepsilon>0$, then:
+$$l((a,b))=l\left(\left[a+\dfrac{\varepsilon}{2},b-\dfrac{\varepsilon}{2}\right]\right)+\varepsilon\le m^*\left(\left[a+\dfrac{\varepsilon}{2},b-\dfrac{\varepsilon}{2}\right]\right)+\varepsilon\le m^*((a,b))+\varepsilon$$
+For unbounded $I$, a finite cover does not cover a subinterval of great enough length of $I$, hence does not cover $I$. $\square$\\
+\textbf{Theorem:} Sub-additivity
+$$\forall \{E_n\}:m^*\left(\infcup E_n\right)\le\\sumninf m^*(E_n)$$
+\textbf{Proof:}\\
+If $\\sumninf m^*(E_n)=\infty$ the the proposition is already true. So, suppose $\\sumninf m^*(E_n)\in\R^{\geq0}$, then
+$$\forall\varepsilon,\exists\{I_k^n\}\st E_n\subset\bigcup_{k=1}^\infty I_k^n\land\sum_{k=1}^\infty l(I_k^n)\le m^*(E_n)+\frac{\varepsilon}{2^n}\implies$$
+$$\\sumninf m^*(E_n)+\varepsilon\geq\\sumninf\sum_{k=1}^\infty l(I_k^n)=\sum_{n,k\in\N^+}l(I_n^k)\geq m^*\left(\infcup E_n\right)$$
+\textbf{Note:} The outer measure is translation invariant because set containment is translation invariant
+\subsection{Lebesgue-Measurable Sets and Lebesgue Measure}
+\textbf{Definition: Lebesgue Measure}\\
+A set $E\subset\R$ is Lebesgue measurable if $\forall A\subset\R:m^*(A)=m^*(A\cap E)+m^*(A\cap E^c)$, we write $E\in\mathcal{M}$\\
+Clearly, $A=(A\cap E)\cup(A\cap E^c)\implies m^*(A)\le m^*(A\cap E)+m^*(A\cap E^c)$.\\
+Hence, $E\in\mathcal{M}\iff m^*(A)\geq m^*(A\cap E)+m^*(A\cap E^c)$\\
+\textbf{Corollary:}
+\begin{enumerate}
+    \item Any null set is measurable
+    \item Any interval is measurable
+\end{enumerate}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    1.\,&\forall\mbox{ Null }N:m^*(N)=0\implies\forall A\subset\R:\\
+    &\,A\cap N\subset N\implies m^*(A\cap N)\le m^*(N)=0\\
+    &\,A\cap N^c\subset A\implies m^*(A\cap N^c)\le m^*(A)\\
+    2.\,&\mbox{Let }I=[a,b]\mbox{ be an interval, }\forall A\subset\R,\forall\varepsilon>0,\exists\{I_n\}\st A\subset\infcup I_n\land m^*(A)\le\\sumninf l(I_n)\le m^*(A)+\varepsilon\\
+    &\,I_n':=I_n\cap[a,b]\implies A\cap[a,b]\subset\infcup I_n'\implies m^*(A\cap[a,b])\le\\sumninf l(I_n')\\
+    &\,I_n'':=I_n\cap(-\infty,a),I_n''':=I_n\cap(b,+\infty)\implies A\cap[a,b]^c\subset\infcup(I_n''\cup I_n''')\implies m^*(A\cap[a,b]^c)\le\\sumninf l(I_n'')+l(I_n''')\\
+    &\implies m^*(A\cap[a,b])+m^*(A\cap[a,b]^c)\le\\sumninf l(I_n')+l(I_n'')+l(I_n''')=\\sumninf l(I_n)\le m^*(A)+\varepsilon\quad\square
+\end{split}
+\end{equation}
+The second proof holds as $I_n',I_n'',I_n'''$ are all intervals, thus the proof can be generalised slightly.\\
+\textbf{Corollary:}
+\begin{equation}
+\begin{split}
+    (1)\,&\R\in\mathcal{M}\\
+    (2)\,&E\in\mathcal{M}\implies E^c\in\mathcal{M}\\
+    (3)\,&\forall n\in\N^+:E_n\in\mathcal{M}\implies\infcup E_n\in\mathcal{M}\\
+    \mbox{(Countable Additivity)}\,&\forall m\neq n:E_m\cap E_n=\emptyset\implies m^*\left(\infcup E_n\right)=\\sumninf m^*(E_n)
+\end{split}
+\end{equation}
+Conditions (1)-(3) define a $\sigma$-field, a $\sigma$-field with countable additivity is a \textit{\textbf{measure space}}\\
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&\forall A\subset\R:m^*(A)=m^*(A)+m^*(\emptyset)=m^*(A\cap\R)+m^*(A\cap\R^c)\\
+    (2)\,&\forall A\subset\R:m^*(A)=m^*(A\cap (E^c)^c)+m^*(A\cap E^c)\\
+    (\mbox{C.A.})\,&\mbox{Initial Case:}\\
+    &\quad\mbox{Suppose }E_1\cap E_2=\emptyset,E_1,E_2\in\mathcal{M}\mbox{, then, }\\
+    &\quad\quad(a)\,m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c)\\
+    &\quad\quad(b)\,m^*(A\cap E_1^c)=m^*(A\cap E_1^c\cap E_2)+m^*(A\cap E_1^c\cap E_2^c)=m^*(A\cap E_2)+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\quad\quad(c)\,m^*(A\cap E_1)+m^*(A\cap E_2)\geq m^*((A\cap E_1)\cup(A\cap E_2))=m^*(A\cap(E_2\cup E_2))\quad(\mbox{sub-additivity})\\
+    &\quad\mbox{Substitute }(b)\mbox{ into }(a):\\
+    &\quad\quad(d)\,m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_2)+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\quad\mbox{Substitute }(c)\mbox{ into }(d):m^*(A)\geq m^*(A\cap(E_1\cup E_2))+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\quad\mbox{Sub-additivity}\implies m^*(A)=m^*(A\cap(E_1\cup E_2))+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\quad\mbox{Substitute }A=E_1\cup E_2\mbox{ into }(d):m^*(E_1\cup E_2)=m^*(E_1)+m^*(E_2)\\
+    &\mbox{General Case:}\\
+    &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c)\\
+    &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_2)+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\quad\quad\vdots\\
+    &\quad m^*(A)=\sumkn m^*(A\cap E_1)+m^*\left(A\cap\left(\bigcup_{k=1}^nE_k\right)^c\right)\quad\mbox{(Prove this as an exercise)}\\
+    &\quad\mbox{We also have:}\left(\bigcup_{k=1}^nE_k\right)^c\supset\left(\bigcup_{k=1}^\infty E_k\right)^c\implies m^*(A)\geq\sum_{k=1}^nm^*(A\cap E_k)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\\
+    &\quad\mbox{Take limit on both sides}:\quad(\mbox{the second inequality and second equation hold due to sub-additivity})\\
+    &\quad m^*(A)\geq\sum_{k=1}^\infty m^*(A\cap E_k)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\geq m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)\right)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\\
+    &\quad\implies m^*(A)=\sum_{k=1}^\infty m^*(A\cap E_k)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)=m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)\right)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\\
+    &\quad\mbox{Substitute }A=\bigcup_{j=1}^\infty E_j\mbox{ into the first equality}\implies m^*\left(\infcup E_n\right)=\\sumninf m^*(E_n)\\
+    (3)\,&\mbox{Initial Case:}\\
+    &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c),m^*(A\cap E_1^c)=m^*(A\cap E_1^c\cap E_2)+m^*(A\cap E_1^c\cap E_2^c)\implies\\
+    &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c\cap E_2)+m^*(A\cap E_1^c\cap E_2^c)\\
+    &\quad\mbox{By sub-additivity}:m^*(A)\geq m^*(A\cap(E_1\cup E_2))+m^*(A\cap(E_1\cup E_2)^c)\\
+    &\mbox{General Case:}\\
+    &\quad(a)\,E_1,\dots,E_n\in\mathcal{M}\implies E_1\cup\dots\cup E_n\in\mathcal{M}\quad\mbox{(prove by induction with the initial case)}\\
+    &\quad(b)\,E_1,E_2\in\mathcal{M}\implies E_1\cap E_2\in\mathcal{M}\quad\mbox{(prove with de Morgan's law)}\\
+    &\quad F_1:=E_1\\
+    &\quad F_2:=E_2\symbol{92}E_1=E_2\cap E_1^c\\
+    &\quad F_3:=E_3\symbol{92}(E_1\cup E_2)=E_2\cap(E_1\cup E_2)^c\\
+    &\quad\quad\vdots\\
+    &\quad F_k:=E_k\symbol{92}(E_1\cup\dots\cup E_{k-1})=E_k\cap(E_1\cup\dots\cup E_{k-1})^c\\
+    &\quad\mbox{Clearly, }\bigcup_{k=1}^\infty F_k\subset\bigcup_{k=1}^\infty E_k,\forall a\in\bigcup_{k=1}^\infty E_k,m_a:=\min\{k\mid a\in E_k\}\implies a\in F_{m_a}\implies \bigcup_{k=1}^\infty E_k\subset\bigcup_{k=1}^\infty F_k\\
+    &\quad\implies \bigcup_{k=1}^\infty E_k=\bigcup_{k=1}^\infty F_k\in\mathcal{M}\\
+\end{split}
+\end{equation}
+\textbf{Corollary:}\\
+If $\forall n\in\N^+:E_n\in\mathcal{M}$, then $E:=\capninf E_n\in\mathcal{M}$\\
+\textbf{Definition:}\\
+$\forall E\in\mathcal{M}$, write $m(E)$ instead of $m^*(E)$ can call $m(E)$ the Lebesgue Measure of $E$.\\
+\textbf{Example: Non-measurable Set}\\
+Define equivalence relation on $[0,1]:x\sim y$ if $x-y\in[-1,1]$ is a rational number. This relation partitions $[0,1]$ into disjoint equivalence classes $(A_\alpha)$ where all elements in the same class differ by a rational number. Each of such classes is countable, hence there are uncountably many classes.\\
+Apply the Axiom of Choice to construct set $E\subset[0,1]\st E$ contains exactly one tyelement from each class.\\
+Enumerate the rationals in $[-1,1]$ into a sequence $(q_n)$. $E_n:=E+q_n$, clearly, $\infcup E_n\subset[-1,2]$\\
+We can see that $(E_n)$ is disjoint, as if $\exists a_\alpha+q_m\in E_m,a_\beta+q_n\in E_n\st a_\alpha+q_m=a_\beta+q_n$, then $a_\alpha-a_\beta=q_n-q_m\in\mathbb{Q}\implies a_\alpha,a_\beta$ are in the same equivalence class$\implies a_\alpha=a_\beta\implies q_n=q_m\implies m=n$\\
+$\forall a\in[0,1],\,a$ is in some equivalence class$\implies\exists b\in E\st a\sim b\implies a=b+q_k\in E_k\implies [0,1]\subset\infcup E_n\subset[-1,2]$
+$$\implies1=m^*([0,1])\le\\sumninf m^*(E_n)=\\sumninf m^*(E)\le3$$
+However, the sum must be $0$ or $\infty$, hence $E$ must not be measurable.
+\subsection{Basic Properties of Lebesgue Measure}
+\textbf{Corollary:} $A\in\mathcal{M}\land m(A\Delta B)=0\implies B\in\mathcal{M}\land m(A)=m(B)$\\
+\textbf{Proof:}\\
+$A\cap B^c,A^c\cap B\subset A\Delta B\implies A\cap B^c,A^c\cap B$ are Null, hence Lebesgue measurable with measure 0.
+\begin{equation}
+\begin{split}
+    0&=m(A\cap B^c)=m(A\cap (A\cap B)^c)=m(A)-m(A\cap B)\implies m(A)=m(A\cap B)\\
+    0&=m(B\cap A^c)=m(B\cap (A\cap B)^c)=m(B)-m(A\cap B)\implies m(B)=m(A\cap B)
+\end{split}
+\end{equation}
+$\implies m(A)=m(B)$\\
+\textbf{Theorem:}
+\begin{equation}
+\begin{split}
+    (1)\,&\forall\varepsilon>0,\forall A\in\R,\exists\mbox{ open }O\st A\subset O\land0\le m(O)-m^*(A)\le\varepsilon\\
+    &\mbox{Consiquently, if }A\in\mathcal{M},\mbox{ then }0\le m(O\symbol{92}A)\le\varepsilon\\
+    (2)\,&\forall A\in\R,\exists\mbox{ open sequence }\{O_n\}\st A\subset\infcup O_n\land m\left(\infcap O_n\right)=m^*(A)
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&\mbox{By definition of the outer measure, }\exists\mbox{ sequence of intervals }\{I_n\}\st A\subset\infcup I_n\mbox{ and }\\sumninf l(I_n)-\frac{\varepsilon}{2}\le m^*(A)\\
+    &\mbox{Suppose the endpoints of }I_n\mbox{ are }a_n,b_n\mbox{, then }I_n\subset\left(a_n-\frac{\varepsilon}{2^{n+2}},b_n+\frac{\varepsilon}{2^{n+2}}\right)=:J_n, O:=\infcup J_n\mbox{ is open, then:}\\
+    &A\subset O\mbox{ and }m(O)\le\\sumninf l(J_n)=\\sumninf l(I_n)+\frac{\varepsilon}{2}\le m^*(A)+\varepsilon\\
+    &\quad\mbox{If }m(E)<\infty\mbox{, then }0\le m(O\cap A)+m(O\cap A^c)-m(A)\le\varepsilon\implies0\le m(O\cap A^c)\le\varepsilon\\
+    &\quad\mbox{If }m(E)=\infty\mbox{, then }E_n:=E\cap(-n,n)\mbox{ and }m(E_n)\mbox{ is finite}\implies\exists\mbox{ open }O_n\supset E_n\st m(O_n\symbol{92}E_n)\le\frac{\varepsilon}{2^n}\\
+    &\quad O:=\infcup O_n\mbox{ is open and contains }E\implies O\symbol{92}E=\left(\infcup O_n\right){\symbol{92}}\left(\infcup E_n\right)\subset\infcup(O_n\symbol{92}E_n)\implies\\
+    &\quad m(O\symbol{92}E)\le\\sumninf m(O_n\symbol{92}E_n)\le\varepsilon\\
+    (2)\,&\mbox{Trivially obtainable from (1)}
+\end{split}
+\end{equation}
+\textbf{Theorem:} Suppose $\forall n:A_n\in\mathcal{M}$, then
+\begin{equation}
+\begin{split}
+    (1)\,&\forall n:A_n\subset A_{n+1}\implies m\left(\infcup A_n\right)=\limninf m(A_n)\\
+    (2)\,&\forall n:A_n\supset A_{n+1}\mbox{ and }m(A_1)\le\infty\implies m\left(\infcap A_n\right)=\limninf m(A_n)\\
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&B_1:=A_1,\forall i>1:B_i:=A_i\symbol{92}A_{i-1}\mbox{, then }\bigcup_{i=1}^\infty B_i=\bigcup_{i=1}^\infty A_i\mbox{, and }\{B_i\}\mbox{ is pairwise disjoint }\implies\\
+    &m\left(\cupiinf A_i\right)=m\left(\cupiinf B_i\right)=\sumiinf m(B_i)=\limninf\sumin m(B_i)=\limninf m\left(\cupin B_i\right)=\limninf m(A_n)\\
+    (2)\,&A_1\bcsl A_1=\emptyset\subset A_1\bcsl A_2\subset\dots\subset A_1\bcsl A_n\subset\cdots,\mbox{ by (1)}:m\left(\cupninf(A_1\bcsl A_n)\right)=\limninf m(A_1\bcsl A_n)\\
+    &\mbox{Since }m(A_1)\mbox{ is finite, }m(A_-\bcsl A_n)=m(A_1)-m(A_n),\mbox{ also, }\cupninf(A_1\bcsl A_n)=A_1\bcsl\cupninf A_n\implies\\
+    &m\left(\infcup (A_1\bcsl A_n)\right)=m(A_1)-m\left(\infcup A_n\right)=m(A_1)-\limninf m(A_n)
+\end{split}
+\end{equation}
+\textbf{Theorem:} Any measure $m^*$ on a measure space satisfy:
+\begin{equation}
+\begin{split}
+    (1)\,&\forall n\in\N^+:m^*\left(\cupin A_i\right)=\sumin m^*(A_i)\quad(\mbox{finite additivity})\\
+    (2)\,&\forall\{B_n\}\st B_n\supset B_{n+1}\mbox{ and }\capninf B_n=\emptyset:\limninf m(B_n)=0\quad(\mbox{continuity at }\emptyset)
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&\mbox{Countable additivity}\implies m^*\left(\cupin A_i\bigcup_{i=n+1}^\infty\emptyset\right)=\sumin m^*(A_i)+\sum_{i=n+1}^\infty m^*(\emptyset)\\
+    (2)\,&A_n:=B_n\bcsl B_{n+1}\mbox{ defines a disjoint sequence in }\mathcal{M}\st\cupninf A_n=B_1\\
+    &\mbox{Suppose }m^*(B_1)<\infty\implies m^*(A_n)=m^*(B_n)-m(B_{n+1})\geq0\implies\\
+    &m^*(B_1)=\sumninf m^*(A_n)=\limkinf\sum_{n=1}^k[m^*(B_n)-m^*(B_{n+1})]=m^*(B_1)-\limninf m^*(B_n)
+\end{split}
+\end{equation}
+\subsection{Borel Sets}
+\textbf{Theorem:} The intersection of a family of $\sigma$-fields is a $\sigma$-field\quad(trivially true)\\
+\textbf{Definition:} $\mathcal{B}:=\bigcap\{\mathcal{F}\mid \mathcal{F}$ is a $\sigma$-field containing all intervals$\}$\\
+In general, we say $\mathcal{G}$ is a $\sigma$-field generated by a family of sets $\mathcal{A}$ if $\mathcal{G}=\bigcap\{\mathcal{F}\mid\mathcal{F}$ is a $\delta$-field such that $\mathcal{A}\subset\mathcal{F}\}$\\
+\textbf{Note:} What sets are Borel?\\
+\null\hfill{Missing content}\\
+\textbf{Theorem:}\\
+The Borel set does not change if instead of all intervals, we take all intervals in the form $(a,\infty)$, or $[a,\infty)$, or $(a,b)$, or $[a,b)$ etc.\quad(denote the family of all intervals with $\mathcal{I}$)\\
+\textbf{Proof:}\\
+Consider the $\sigma$-field generated by the family of all open intervals $\mathcal{J}$, $\mathcal{C}:=\bigcap\{\mathcal{F}\mid\mathcal{F}\supset J,\mathcal{F}$ is a $\sigma$-field$\}$
+$$\mathcal{J}\subset\mathcal{I}\implies(\mathcal{F}\subset\mathcal{I}\implies\mathcal{F}\supset\mathcal{J})\implies\mathcal{B}\subset\mathcal{C}$$
+Countable intersection of open intervals can generals closed intervals, countable union of closed intervals can generate open intervals. Countably many half close half open intervals can cover infinity.\quad$\square$\\
+\textbf{Corollary:} Not all Null sets are Borel\\
+\textbf{Proof:}\\
+We assume all Null sets to be Borel, then:\\
+As $\forall A\subset\R,\exists$ Borel set $O\st A\subset O$ and $O\bcsl A$ is Null$\implies A=O\cap(O\bcsl A)^c$ is Borel.\\
+However, as all Borel sets are measurable, and as there exist unmeasurable sets, there must exist non-Borel sets.\\
+\textbf{Definition: Completeness}\\
+A measure space $({\bf{X}},\mathcal{F},\mu)$ is complete if $\forall F\in\mathcal{F}\st\mu(F)=0:N\subset F\implies N\in\mathcal{F}$\\
+A completion of $\mathcal{G}$ is $\{G\cap N\mid G\in\mathcal{F}\land N\subset F\in\mathcal{F}\st \mu(F)=0\}$\\
+\textbf{Theorem:} $\mathcal{M}$ is the completion of $\mathcal{B}$\\
+\textbf{Proof:}\\
+Let the completion of $\mathcal{B}$ be $\mathcal{C}$\\
+Suppose $B$ is Null, then $\forall N\subset B\in\mathcal{B}:\forall A\subset\R$ there is $m^*(A\cap N)=0$ and $m^*(A\cap N^c)\le m^*(A)$\\
+$\implies m^*(A\cap N)+m^*(A\cap N^c)\le m^*(A)\implies N\in\mathcal{M}\implies\mathcal{C}\subset\mathcal{M}$\\
+$\forall E\in\mathcal{M}\st m(E)\le\infty,\exists B\in\mathcal{B}\st E\subset B$ and $m(B)=m(E),m(B\bcsl E)=0\implies\exists L\in\mathcal{B}\st B\bcsl E\subset L\land m(L)=0$\\
+$E=B\bcsl(B\bcsl E)=(B^c\cup(B\bcsl E))^c,B\in\mathcal{B}\implies B^c\in\mathcal{B}\implies B^c\cup(B\bcsl E)\in\mathcal{C}\implies (B^c\cup(B\bcsl E))^c\in\mathcal{C}$\\
+If $m(E)=\infty$, then $E_n:=E\cap[-n,n]$ is finite$\implies E_n\in\mathcal{C}\implies E=\cupninf E_n\in\mathcal{C}\implies\mathcal{M}\subset\mathcal{C}\implies\mathcal{M}=\mathcal{C}$\\
+\textbf{Theorem:} outer approximation
+\begin{equation}
+\begin{split}
+    (1)\,&\forall\varepsilon>0,\forall A\in\R,\exists\mbox{ closed }F\st A\supset F\land0\le m^*(A)-m(F)\le\varepsilon\\
+    &\mbox{Consiquently, if }A\in\mathcal{M},\mbox{ then }0\le m(A\bcsl F)\le\varepsilon\\
+    (2)\,&\forall A\in\R,\exists\mbox{ closed sequence }\{F_n\}\st A\supset\infcup F_n\land m\left(\infcap F_n\right)=m^*(A)
+\end{split}
+\end{equation}
+\textbf{Proof:} Take the complement of $A$ and use the inner approximation with open sets.\\
+\textbf{Definition: Regular Borel Measure}\\
+A non-negative countably additive set function $\mu$ on $\mathcal{B}\st\forall B\in\mathcal{B}:$
+\begin{equation}
+\begin{split}
+    &\mu{B}=\inf\{\mu(O)\mid O\mbox{ open, }O\supset B\}\\
+    &\mu{B}=\inf\{\mu(F)\mid F\mbox{ closed, }F\subset B\}
+\end{split}
+\end{equation}
+\subsection{Probability}
+\subsubsection{Probability Space}
+\subsubsection{Events: Conditioning and Independence}
+\subsubsection{Applications to Mathematical Finance}
+\subsection{Proofs of Propositions}
+\clearpage
+\section{Measurable Functions}
+\subsection{Lebesgue-Measurable Functions}
+\textbf{Definition:} $f:E\to\R$ is Lebesgue (Borel) measurable if $\forall$ interval $I\subset\R:f^{-1}(I):=\{x\in\R\mid F(x)\in I\}\in\mathcal{M}\,(\mathcal{B})$
+\textbf{Corollary:} $f$ is measurable$\iff\forall a,f^{-1}(\mbox{some type of interval})$ is measurable\\
+\textbf{Proof:}\\
+$\implies$ is trivial, now we prove the other direction.
+\begin{equation}
+\begin{split}
+    &f^{-1}((-\infty,b))=f^{-1}\left(\cupninf\left(-\infty,b-\frac{1}{n}\right]\right)=\cupninf f^{-1}\left(\left(-\infty,b-\frac{1}{n}\right]\right)\quad(\mbox{closed}\iff\mbox{open})\\
+    &f^{-1}((-\infty,a])=f^{-1}(\R\bcsl(a,\infty))=E\bcsl f^{-1}(a,\infty)\quad(\mbox{changing side of infinity})\\
+    &f^{-1}(a,b)=f^{-1}((-\infty,b)\cap(a,\infty))=f^{-1}((-\infty,b))\cap f^{-1}((a,\infty))\quad(\mbox{infinite to finite})\\
+    &\mbox{Finite to infinite is trivial}\\
+\end{split}
+\end{equation}
+Hence, from any type of interval, we can generate all other intervals.\quad$\square$\\
+\textbf{Examples:}\\
+It can be easiy proven that all: continuous funcitons, indicator functions, and monotone functions are measurable.
+\subsection{Properties}
+\textbf{Theorem:} $f,g$ are measurable (Borel)$\implies f+g,fg$ are measurable (Borel)\\
+\textbf{Proof:}\\
+Take some sequance of all rationals $\{q_n\}$, then
+$$\forall a\in\R,B_a:=\cupninf\{t\mid f(t)<q_n\land g(t)<a-q_n\}=\cupninf(\{t\mid f(t)<q_n\}\cap\{t\mid g(t)<a-q_n\})\in\mathcal{M}$$
+$$t\in (f+g)^{-1}((-\infty,a))\implies f(t)+g(t)<a\implies f(t)<a-g(t)\implies\exists q_m\st f(t)<q_m<a-g(t)\implies$$
+$$f(t)<q_m\land g(t)<a-q_m\implies t\in B_a\implies B_a\supset(f+g)^{-1}((-\infty,a)),\mbox{ inclusion in the other direction is trivial}$$
+$$\implies (f+g)^{-1}((-\infty,a))=B_a\in\mathcal{M}$$
+Suppose $h:E\to\R$ is measurable, then $\left(h^2\right)^{-1}((a,\infty))=\{x\mid h^2(x)>a\}=\{x\mid h(x)>\sqrt{a}\}\cup\{x\mid h(x)<-\sqrt{a}\}\in\mathcal{M}$
+$$\implies fg=\frac{1}{4}\left((f+g)^2-(f-g)^2\right)\in\mathcal{M}$$
+\textbf{Examples:}\\
+Let $f$ be a measurable function and $A\in\mathcal{M}$, then $f\cdot\1_A$ is measurable. $A:=\{x\in E\mid f(x)>0\}$, then\\
+$f^+(x)=f\cdot\1_A=\begin{cases}
+    f(x)&f(x)>0\\
+    0&f(x)\le0
+\end{cases}$ is measurable, similarly is $f^-(x)=\begin{cases}
+    0&f(x)>0\\
+    -f(x)&f(x)\le0
+\end{cases}$\\
+It can also be shown that $f^+(x),f^-(x)$ is measurable$\iff f(x)$ is measurable.\\
+\textbf{Lemma:} A stronger and more general result\\
+Suppose $F:\R^2\to\R$ is continuous, if $f,g$ are measurable, then $h(x)=F(f(x),g(x))$ is measurable\\
+\textbf{Proof:}\\
+$\forall a\in\R,G_a:=\{(u,v)\mid F(u,v)>a\}=F^{-1}(a,+\infty)$ is open$\implies G_a=\cupninf((p_n,q_n)\times(r_n,s_n))$
+$$\forall (p,q)\times(r,s):\{x\mid (f(x),g(x))\in(p,q)\times(r,s)\}=\{x\mid f(x)\in(p,q)\}\cap\{x\mid g(x)\in(r,s)\}\in\mathcal{M}$$
+$$\forall a\in\R,\{x\mid h(x)>a\}=\{x\mid (f(x),g(x))\in G_a\}=\cupninf(\{x\mid f(x)\in(p,q)\}\cap\{x\mid g(x)\in(r,s)\})\in\mathcal{M}$$
+\textbf{Theorem:}\\
+$\{f_n\}$ is a measurable sequence$\implies\max\limits_{n\le k}f_n,\sup\limits_{n\in\N}f_n,\limninf\sup f_n$ are measurable (as well as their counterparts)\\
+\textbf{Proof:} $\forall k\in\N:$
+\begin{equation}
+\begin{split}
+    &\{x\mid(\max_{n\le k}f_n)(x)>a\}=\cupnk\{x\mid f_n(x)>a\}\in\mathcal{M}\\
+    &\{x\mid(\sup_{n\geq k}f_n)(x)>a\}=\bigcup_{n=k}^\infty\{x\mid f_n(x)>a\}\in\mathcal{M}\\
+    &\limninf\sup f_n=\inf_{n\geq1}\{\sup_{m\geq n}f_m\}\mbox{ is measurable}
+\end{split}
+\end{equation}
+\textbf{Corollary:} $\{f_n\}$ is a measurable sequence and $f_n\to f\implies f$ is measurable\\
+\textbf{Proof:} $\limninf f_n=\limninf\sup f_n$, thus clearly.\\
+\textbf{Theorem:} If $f:E\to\R$ is measurable, $g:E\to\R\st\{x\mid f(x)\neq g(x)\}$ is null, then $g$ is measurable\\
+\textbf{Proof:}\\
+$d(x):=g(x)-f(x)$ is equal to $0$ except on a null set$\implies\{x\mid d(x)>a\}=\begin{cases}
+    \mbox{a null set}&a\geq0\\
+    \mbox{a full set (complement of null)}&a<0
+\end{cases}$\\
+$\implies d(x)$ is measurable$\implies f=f+d$ is measurable\quad$\square$\\
+\textbf{Corollary:} Suppose $\{f_n\}$ is a measurable sequence and $A$ is null s.t. $\forall x\in E\bcsl A:f_n(x)\to f$, then $f$ is measurable\\
+\textbf{Proof:} $\forall x\in\R:\1_{A^c}\cdot f_n(x)\to\1_{A^c}\cdot f(x)$ hence is measurable$\implies f$ is measurable\\
+\textbf{Corollary:} $\{f_n(x)\}$ is measurable sequence$\implies E=\{x\mid f_n(x)\mbox{ converges}\}\in\mathcal{M}$\\
+\textbf{Proof:} $g(x):=\lim\sup f_n(x),h(x):=\lim\inf f_n(x)\implies g(x)-h(x)\mbox{ is measurable}\implies(g(x)-h(x))^{-1}([0,0])\in\mathcal{M}$\\
+\textbf{Definition:} Suppose $f:E\to\overline\R$ is measurable, the \textit{\textbf{essential supremum}} and \textit{\textbf{essential infremum}}
+\begin{equation}
+\begin{split}
+    \esssup:=\inf\{z\mid f\le z\alev\}\\ \essinf:=\sup\{z\mid f\geq z\alev\}
+\end{split}
+\end{equation}
+$$A:=\{x\mid f(x)>\esssup f\},A_n:=\{x\mid f(x)>\esssup f+\frac{1}{n}\},\,\clear A=\cupninf A_n$$
+\textbf{Proposition:} $\esssup f+\esssup g\geq\esssup(f+g)$\\
+\textbf{Proof:}\\
+$f\le\esssup f,g\le\esssup g\alev\implies f+g\le\esssup f+\esssup g\alev\implies\esssup f+\esssup g\in\{z\mid f+g\le z\alev\}$\\
+$\implies\esssup(f+g)=\inf\{z\mid f+g\le z\alev\}\le\esssup f+\esssup g$\\
+\textbf{Corollary:} $\esssup f\le\sup f$ clearly\\
+\textbf{Corollary:} $f$ is continuous$\implies\esssup f=\sup f$\\
+\textbf{Proof:}\\
+Suppose $f$ is continuous and $\esssup f\neq\sup f$, then $\exists N$ null$\st\forall x\in N: f(x)>\esssup f$, choose an arbitrary $x_0\in N$, then $\exists\delta\st\forall x\in(x_0-\delta,x_0+\delta):f(x)\geq\esssup f\implies (x_0-\delta,x_o+\delta)\in N\mbox{ is not null (contradiction)}$
+\subsection{Probabilities}
+\clearpage
+\section{Integral}
+\subsection{Definition of the Integral}
+\textbf{Definition: Simple Function}\\
+$\varphi:R\to\{a_1,\dots,a_n\}\st\forall i:A_i:=\varphi^{-1}(\{a_i\})\in\mathcal{M},\varphi(x)=\sumin a_i\1_A(x)$, thus simple functions are measurable\\
+\textbf{Definition:} The \textit{\textbf{Lebesgue integral}} over $E\in\mathcal{M}$ of the simple function $\varphi$ is $dint_E\varphi \dif m=\sumin a_im(A_i\cap E)$\\
+\textbf{Example:} $\dint_\R\1_\Q \dif m=1\times m(\Q)+0\times m(\R\bcsl\Q)=0$\\
+\textbf{Definition:} $\forall$ non-negative measurable unctions $f$ and $E\in\mathcal{M}$
+$$\dint_Ef\dif m:=\sup Y(E,f)\mbox{, where }Y(E,f):=\left\{\dint_E\varphi \dif m\,\middle\vert\,0\le\varphi\le f\land\varphi\mbox{ is simple}\right\}$$
+If $E=[a,b]$, we write the integral as: $\dint_a^b f\dif m$ or $\dint_a^b f\dif m(x),\dint f\dif m:=\dint_\R f\dif m,\dint_A f\dif m:=\dint\1_A\dif m$\\
+\textbf{Theorem:} Let $\varphi,\psi$ be simple functions, then
+\begin{equation}
+\begin{split}
+    (1)\,&\varphi\le\psi\implies\int_E\varphi \dif m\le\int_E\psi \dif m\\
+    (2)\,&A\cap B=\emptyset\land A,B\in\mathcal{M}\implies\int_{A\cup B}\varphi \dif m=\int_A\varphi \dif m+\int_B\varphi \dif m\\
+    (3)\,&\forall a>0:\int_Ea\cdot\varphi \dif m=a\cdot\int_E\varphi \dif m
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&\mbox{clearly}\\
+    (2)\,&\int_{A\cup B}\varphi \dif m=\sum c_im(D_i\cap(A\cup B))=\sum c_1(m(D_i\cap A)+m(D_i\cap B))\\
+    &=\sum c_im(D_i\cap A)+\sum c_im(D_i\cap B)=\int_A\varphi \dif m+\int_B\varphi \dif m\\
+    (3)\,&\int_Ea\cdot\varphi \dif m=\sum a\cdot c_im(E\cap A_i)=a\sum c_im(E\cap A_i)=a\cdot\int_E\varphi \dif m
+\end{split}
+\end{equation}
+\textbf{Theorem:} Suppose $f,g$ are non-negative measurable functions, then
+\begin{equation}
+\begin{split}
+    (1)\,&A\in\mathcal{M}\land f\le g\implies\int_Af\dif m\le\int_Ag\dif m\\
+    (2)\,&A,B\in\mathcal{M}\land B\subset A\implies\int_Bf\dif m\le\int_Af\dif m\\
+    (3)\,&a\geq0\implies\int_Aa\cdot f\dif m=a\int_Af\dif m\\
+    (4)\,&A\mbox{ is null}\implies\int_Af\dif m=0\\
+    (5)\,&A,B\in\mathcal{M}\land A\cap B=\emset\implies\int_{A\cup B}f\dif m=\int_Af\dif m+\int_Bf\dif m
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&Y(A,f)\subset Y(A,g)\implies\sup Y(A,f)\le\sup Y(A,g)\\
+    (2)\,&\forall\mbox{ simple function }\varphi\mbox{ on }B\mbox{ below }f,\varphi^*:=\begin{cases}
+        \varphi&x\in B\\
+        0&x\in A\bcsl B
+    \end{cases}\implies\int_B\varphi \dif m=\int_A\phi^*\dif m\implies Y(B,f)\subset Y(A,f)\\
+    (3)\,&\sup Y(A,af)=a\cdot\sup Y(A,f)\quad(\mbox{clearly})\\
+    (4)\,&\mbox{clearly}\\
+    (5)\,&c\in Y(A\cup B,f)\implies c=\int_{A\cup B}\varphi \dif m=\int_A\varphi \dif m+\int_B\varphi \dif m\implies Y(A\cup B,f)\subset Y(A,f)+Y(B,f)\\
+    &\forall\varphi,\psi\le f,\varphi^*:=\begin{cases}
+        \varphi&x\in A\\
+        0&x\notin A
+    \end{cases},\psi^*:=\begin{cases}
+        \psi&x\in B\\
+        0&x\notin B
+    \end{cases}\implies\int_A\varphi \dif m=\int_A\varphi^*\dif m,\int_B\psi \dif m=\int_B\psi^*\dif m\\
+    &\gamma:=\varphi^*+\psi^*\implies\int_A\varphi \dif m+\int_B\psi \dif m=\int_A\varphi^*\dif m+\int_B\psi^*\dif m=\int_A\gamma \dif m+\int_B\gamma \dif m=\int_{A\cup B}\gamma \dif m\\
+    &\implies Y(A,f)+Y(B,f)\subset Y(A\cup B,f)\implies Y(A\cup B,f)=Y(A,f)+Y(B,f)\\
+    &\implies\sup Y(A\cup B,f)=\sup Y(A,f)+\sup Y(B,f)
+\end{split}
+\end{equation}
+\textbf{Proposition:} if $f,g$ are measurable and $f\le g\alev\implies\dint f\dif m\le\int g\dif m$\\
+\textbf{Proof:}\\
+$A:=\{x\mid f(x)>g(x)\}$, by definition, $A$ is null$\implies f^*:=\begin{cases}
+    g&x\in A\\
+    f&x\notin A
+\end{cases},f_*:=\begin{cases}
+    f(x)-g(x)&x\in A\\
+    0&x\notin A
+\end{cases}\implies$
+$$f^*\le g,f=f^*+f_*\implies\int f\dif m=\int f^*+f_*\dif m=\int f^*\dif m+\int f_*\dif m\le\int g\dif m$$
+\subsection{Monotone Convergence Theorem}
+\textbf{Fatou's Lemma:} $\{f_n\}$ is a non-negative measurable sequence$\implies\limninf\displaystyle\inf\int_Ef_n\dif m\geq\dint_E\limninf\inf f_n\dif m$\\
+\textbf{Proof:}\\
+$f=\limninf\inf\limits_{k\geq n}f_k$, let $\varphi$ be a simple function$\st\varphi\le f$, choose small $\varepsilon\st\overline{\varphi}(x):=\begin{cases}
+    \varphi(x)-\varepsilon>0&\varphi(x)\geq0\land x\in E\\
+    0&\varphi(x)=0\lor x\notin E
+\end{cases}$
+$$A_n:=\{x\mid\inf_{k\geq n}f_k(x)\geq\overline{\varphi}(x)\}\implies A_n\subset A_{n+1},\cupninf A_n=\R\implies$$
+$$\int_{A_n\cap E}\overline\varphi \dif m\le\int_{A_n\cap E}\inf_{k\geq n}f_k\dif m\le\int_{A_n\cap E}f_k\dif m\,(k\geq n)\le\int_Ef_k\dif m\,(k\geq n)\implies\int_{A_n\cap E}\overline\varphi \dif m\le\limninf\inf\int_E f_n\dif m$$
+$$\mbox{Let }n\to\infty:\overline\varphi=\sum_{i=1}^lc_i\1_{B_i}\implies\int_{A_n\cap E}\overline\varphi \dif m=\sum_{i=1}^l c_im(A_n\cap E\cap B_i)\to\sum_{i=1}^lc_im(E\cap B_i)=\int_E\overline\varphi \dif m$$
+$$\implies\int_E\varphi \dif m-\varepsilon\cdot m(\{x\in E\mid\varphi(x)>0\})\le\limkinf\inf\int_Ef_k\dif m$$
+Suppose $m(\{x\in E\mid\varphi(x)>0\})\le\infty$, then $\dint_E\varphi \dif m\le\displaystyle\limkinf\inf\dint_Ef_k\dif m$\\
+If $m(\{x\in E\mid\varphi(x)\geq0\})=\infty$, then $\dint_E \displaystyle\limkinf\inf f_k\dif m\geq\dint_E\varphi \dif m=\infty$
+$$a:=\frac{1}{2}\min\{c_i\},D_n:=\{x\mid\inf_{k\geq n}f_k(x)>a\}\implies\cupninf D_n\supset\{x\in E\mid\varphi(x)>0\}\implies\int_{D_n\cap E}a\dif m\to\infty\implies$$
+$$\int_{D_n\cap E}a\dif m\le\int_{D_n\cap E}\inf_{k\geq n}f_k\dif m\le\int_{D_n\cap E}f_k\dif m\le\int_Ef_k\dif m\,(k\geq n)\implies\limninf\inf\int_Ef\dif m=\infty\geq\int_E\limninf\inf f_n\dif m$$
+\textbf{Monotone Convergence Theorem (MCT):}\\
+If $\{f_n\}$ is a non-negative measurable sequence and $\forall x\in E:f_n(x)\nearrow f(x)$, then $\limninf\dint_Ef_n(x)\dif m=\dint_Ef\dif m$\\
+\textbf{Proof:}
+$$f_n\le f\implies\int_Ef_n\dif m\le\int_ef\dif m\implies\limninf\sup\int_Ef_n\dif m\le\int_ef\dif m\le\limninf\inf\int_Ef_n\dif m$$
+$$\implies\int_Ef\dif m=\limninf\inf\int_Ef_n\dif m=\limninf\sup\int_Ef_n\dif m\quad\square$$
+\textbf{Corollary:} Suppose $\{f_n\}$ is non-negative measurable and $f_n\nearrow f\alev$, then $\forall E$ measurable: $\dint_Ef_n\dif m\nearrow\dint_Ef\dif m$\\
+\textbf{Proof:}
+$$A:=\{x\mid f_n(x)\nearrow f(x)\land x\in E\}\implies g_n:=\begin{cases}
+    f_n&x\in A\\
+    0&x\in A^c
+\end{cases}\nearrow\begin{cases}
+    f&x\in A\\
+    0&x\in A^c
+\end{cases}=:g,E=(E\cap A)\cup(E\cap A^c)\implies$$
+$$\int_Eg_n\dif m=\int_{E\cap A}f_n\dif m+\int_{E\cap A^c}=\int_{E\cap A}f_n\dif m+\int_{E\cap A^c}f_n\dif m=\int_Ef_n\dif m,\int_Ef_n\dif m=\int_Ef_n\dif m\nearrow\int_Eg\dif m=\int_Ef\dif m$$
+\textbf{Proposition:} $\forall$ non-negative measurable $f$, $\exists$ non-negative measurable sequence $\{s_n\}$ of simple functinos$\st s_n\nearrow$\\
+\textbf{Proof:} Consider $s_n:=\displaystyle\sum_{k=0}^{2^{2n}}\dfrac{k}{2^n}\cdot\1_{f^{-1}([\frac{k}{2^n},\frac{k+1}{2^n}])}$
+\subsection{Integrable Function}
+\textbf{Definition:} If $E\in\mathcal{M}$ and for measurable function $f$, $\dint_Ef^+\dif m$ and $\dint_Ef^-\dif m$ are finite, then $f$ is \textit{\textbf{integrable}}
+$$\int_Ef\dif m:=\int_Ef^+\dif m-\int_Ef^-\dif m,\,\mathcal{L}^1(E):=\{f\mid f\mbox{ is integrable on }E\}$$
+\textbf{Proposition:} If $f,g$ are integrable and $f\le g$, then $\dint f\dif m\le\int g\dif m$\quad(Prove as an exercise)\\
+\textbf{Standard procedure for proofs for integral properties:}
+\begin{enumerate}
+    \item Verifying the property for indicator functions
+    \item Use Linearity to extend the result to non-negative simple functions
+    \item Use the MCT to show property for non-negative measurable functions
+    \item Extend to the class of functions by writing $f=f^+-f^-$ an linearity
+\end{enumerate}
+\textbf{Theorem:} $\forall$ integrable function $f,g$, $f+g$ is integrable and $\dint_Ef+g\dif m=\dint_Ef\dif m+\dint_Eg\dif m$\\
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    1.\,&\mbox{Trivial}\\
+    2.\,&\varphi=\sum a_i\1_{A_i},\psi=\sum b_j\1_{B_j}\implies\varphi+\psi=\sum_{i,j}(a_i+b_j)\cdot\1_{A_i\cap B_j}\implies\int_E\varphi+\psi\dif m\sum_{i,j}(a_i+b_j)m(A_i\cap B_j\cap E)\\
+    &=\sum_ia_i\sum_jm(A_i\cap B_j\cap E)+\sum_jb_h\sum_im(A_i\cap B_j\cap E)=\sum_ia_im(A_i\cap\bigcup_jB_j\cap E)+\sum_jb_hm(\bigcup_iA_i\cap B_j\cap E)\\
+    &=\sum_ia_im(A_i\cap E)+\sum_jb_jm(B_j\cap E)=\int_E\varphi\dif m+\int_E\psi\dif m\\
+    3.\,&\forall f^*,g^*\mbox{ non-negative measurable, }\exists\{s_n\},\{t_n\}\mbox{ simple }\st s_n\incto f^*,t_n\incto g^*\implies s_n+t_n\incto f^*+g^*\\
+    &\mbox{By the MCT}:\int_E f^*+g^*\dif m=\limninf\int_Es_n+t_n\dif m=\limninf\int_Es_n\dif m+\limninf\int_Et_n\dif m=\int_Ef^*\dif m+\int_Eg^*\dif m\\
+    4.\,&\forall f,g\mbox{ non-negative integrable}:\int_E|f+g|\dif m\le\int_E|f|+|g|\dif m\\
+    &f+g=\begin{cases}
+        (f+g)^+-(f+g)^-\\
+        (f^+-f^-)+(g^+-g^-)
+    \end{cases}\implies(f+g)^++f^-+g^-=f^++g^++(f+g)^-\implies\\
+    &\int_E(f+g)^+\dif m+\int_E f^-\dif m+\int_Eg^-\dif m=\int_Ef^+\dif m+\int_Eg^+\dif m+\int_E(f+g)^-\dif m\implies\\
+    &\int_E(f+g)^+\dif m-\int_E(f+g)^-\dif m=\int_Ef^+\dif m-\int_Ef^-\dif m+\int_Eg^+\dif m-\int_Eg^-\dif m\\
+    &\implies\int_Ef+g\dif m=\int_Ef\dif m+\int_Eg\dif m\\
+\end{split}
+\end{equation}
+\textbf{Proposition:} $f$ is integrable and $c\in\R\implies\dint_Ec\cdot f\dif m=c\cdot\dint_Ef\dif m$
+\begin{equation}
+\begin{split}
+    1.-3.\,&\mbox{Has been done}\\
+    4.\,&c\geq0:\begin{cases}
+        (c\cdot f)^+=c\cdot(f^+)\\
+        (c\cdot f)^-=c\cdot(f^-)
+    \end{cases}\mbox{then by definition}\\
+    &c<0:\begin{cases}
+        (c\cdot f)^+=-c\cdot(f^+)\\
+        (c\cdot f)^-=-c\cdot(f^-)
+    \end{cases}\mbox{then by definition}
+\end{split}
+\end{equation}
+\textbf{Inference:} $\forall E$ measurable, $\mathcal{L}^1(E)$ is a vector space\\
+\textbf{Theorem:}
+\begin{equation}
+\begin{split}
+    (1)\,&\forall A\in\mathcal{M}:\int_Af\dif m\le\int_Ag\dif m\implies f\le g\alev\\
+    (2)\,&\forall A\in\mathcal{M}:\int_Af\dif m=\int_Ag\dif m\implies f=g\alev
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\iff(1')\,&\forall A\in\mathcal{M}:\int_Ah\dif m\geq0\implies h\geq0\alev\\
+    (1')\,&A_n:=\{x\mid h(x)\le-\frac{1}{n}\},A:=\{x\mid h(x)\le 0\}\implies A=\cupninf A_n\\
+    &\implies\forall n:0=\int_{A_n}h\dif m\le\int_{A_n}-\frac{1}{n}\dif m=-\frac{1}{n}m(A_n)\implies m(A_n)=0\\
+    &\implies m(A)=m(\cupninf A_n)\le\sumninf m(A_n)=0\\
+    (2')\,&\mbox{is similar to }(1')
+\end{split}
+\end{equation}
+\textbf{Proposition:}
+\begin{equation}
+\begin{split}
+    (1)\,&\mbox{integrable}\implies\mbox{finite}\alev\\
+    (2)\,&f\mbox{ measurable}\land A\in\mathcal{M}\implies m(A)\cdot\inf_Af\le\int_Af\dif m\le m(A)\cdot\sup_Af\\
+    (3)\,&\left|\int f\dif m\right|\le\int|f|\dif m\\
+    (4)\,&f\geq0\land\int f\dif m=0\implies f=0\alev
+\end{split}
+\end{equation}
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    (1)\,&\mbox{trivial}\\
+    (2)\,&m(A)\cdot\inf_Af=\int_A\inf_Af\dif m,\inf_Af\le f\implies m(A)\cdot\inf_Af\le\int_Af\dif m\\
+    (3)\,&\begin{cases}
+        \dint f\dif m\geq0\implies|\dint f\dif m|=\dint f\dif m,|f|\geq f\implies\dint|f|\dif m\geq\dint f\dif m\\
+        \dint f\dif m<0\implies|\dint f\dif m|=-\dint f\dif m,|f|\geq -f\implies\dint|f|\dif m\geq\dint-f\dif m=-\dint f\dif m
+    \end{cases}\\
+    (4)\,&\mbox{Similar to the last theorem}
+\end{split}
+\end{equation}
+\textbf{Theorem:} $f\geq0\implies A\mapsto\dint_Af\dif m$ is a measure\\
+\textbf{Proof:}\\
+$\mu(A):=\dint_Af\dif m$, now we only have to prove countable additivity for $mu$. For pair-wise disjoint $E_i:$
+$$f\cdot\1_{\cupin E_i}\incto f\cdot \1_{\cupiinf E_i}\implies\int f\cdot\1_{\cupin E_i}\dif m\incto\int f\cdot\1_{\cupiinf E_i}\dif m=\dint_{\cupiinf E_i}f\dif m=\mu(\cupiinf E_i)$$
+$$\int f\cdot\1_{\cupin E_i}\dif m=\int_{\cupin E_i}f\dif m=\sumin\int_{E_i}f\dif m\incto\sumiinf\mu(E_i)\implies\mu(\cupiinf E_i)=\sumiinf\mu(E_i)\quad\square$$
+\subsection{Dominated Convergence Theorem}
+\subsection{Relation to the Riemann Integral}
+\subsection{Approximation of Measurable Functions}
+\clearpage
+\section{Spaces of Integrable Functions}
+\clearpage
+\section{Product Measures}
+\clearpage
+\section{The Radon-Nikodym Theorem}
+\clearpage
+\section{Limit Theorems}
+\clearpage
+\end{document}
