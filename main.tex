@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{tikz}
+\usepackage{extarrows}
 \title{Measure and Integration}
 \author{Zhikun Li}
 \date{}
@@ -20,76 +21,82 @@
 \newcommand{\mdec}{\searrow}
 \newcommand{\minc}{\nearrow}
 
-\newcommand{\infsum}{\sum\limits_{n=1}^\infty}
-\newcommand{\sumhinf}{\sum\limits_{h=1}^\infty}
-\newcommand{\sumiinf}{\sum\limits_{i=1}^\infty}
-\newcommand{\sumjinf}{\sum\limits_{j=1}^\infty}
-\newcommand{\sumkinf}{\sum\limits_{k=1}^\infty}
-\newcommand{\sumlinf}{\sum\limits_{l=1}^\infty}
-\newcommand{\summinf}{\sum\limits_{m=1}^\infty}
-\newcommand{\sumninf}{\sum\limits_{n=1}^\infty}
-\newcommand{\sumpinf}{\sum\limits_{p=1}^\infty}
-\newcommand{\sumrinf}{\sum\limits_{r=1}^\infty}
-\newcommand{\sumsinf}{\sum\limits_{s=1}^\infty}
-\newcommand{\sumtinf}{\sum\limits_{t=1}^\infty}
+\newcommand{\sumhinf}{\displaystyle\sum_{h=1}^\infty}
+\newcommand{\sumiinf}{\displaystyle\sum_{i=1}^\infty}
+\newcommand{\sumjinf}{\displaystyle\sum_{j=1}^\infty}
+\newcommand{\sumkinf}{\displaystyle\sum_{k=1}^\infty}
+\newcommand{\sumlinf}{\displaystyle\sum_{l=1}^\infty}
+\newcommand{\summinf}{\displaystyle\sum_{m=1}^\infty}
+\newcommand{\sumninf}{\displaystyle\sum_{n=1}^\infty}
+\newcommand{\sumpinf}{\displaystyle\sum_{p=1}^\infty}
+\newcommand{\sumrinf}{\displaystyle\sum_{r=1}^\infty}
+\newcommand{\sumsinf}{\displaystyle\sum_{s=1}^\infty}
+\newcommand{\sumtinf}{\displaystyle\sum_{t=1}^\infty}
 
-\newcommand{\infcap}{\bigcap\limits_{n=1}^\infty}
-\newcommand{\caphinf}{\bigcap\limits_{h=1}^\infty}
-\newcommand{\capiinf}{\bigcap\limits_{i=1}^\infty}
-\newcommand{\capjinf}{\bigcap\limits_{j=1}^\infty}
-\newcommand{\capkinf}{\bigcap\limits_{k=1}^\infty}
-\newcommand{\caplinf}{\bigcap\limits_{l=1}^\infty}
-\newcommand{\capminf}{\bigcap\limits_{m=1}^\infty}
-\newcommand{\capninf}{\bigcap\limits_{n=1}^\infty}
-\newcommand{\cappinf}{\bigcap\limits_{p=1}^\infty}
-\newcommand{\caprinf}{\bigcap\limits_{r=1}^\infty}
-\newcommand{\capsinf}{\bigcap\limits_{s=1}^\infty}
-\newcommand{\captinf}{\bigcap\limits_{t=1}^\infty}
+\newcommand{\infcap}{\displaystyle\bigcap_{n=1}^\infty}
+\newcommand{\caphinf}{\displaystyle\bigcap_{h=1}^\infty}
+\newcommand{\capiinf}{\displaystyle\bigcap_{i=1}^\infty}
+\newcommand{\capjinf}{\displaystyle\bigcap_{j=1}^\infty}
+\newcommand{\capkinf}{\displaystyle\bigcap_{k=1}^\infty}
+\newcommand{\caplinf}{\displaystyle\bigcap_{l=1}^\infty}
+\newcommand{\capminf}{\displaystyle\bigcap_{m=1}^\infty}
+\newcommand{\capninf}{\displaystyle\bigcap_{n=1}^\infty}
+\newcommand{\cappinf}{\displaystyle\bigcap_{p=1}^\infty}
+\newcommand{\caprinf}{\displaystyle\bigcap_{r=1}^\infty}
+\newcommand{\capsinf}{\displaystyle\bigcap_{s=1}^\infty}
+\newcommand{\captinf}{\displaystyle\bigcap_{t=1}^\infty}
 
-\newcommand{\infcup}{\bigcup\limits_{n=1}^\infty}
-\newcommand{\cuphinf}{\bigcup\limits_{h=1}^\infty}
-\newcommand{\cupiinf}{\bigcup\limits_{i=1}^\infty}
-\newcommand{\cupjinf}{\bigcup\limits_{j=1}^\infty}
-\newcommand{\cupkinf}{\bigcup\limits_{k=1}^\infty}
-\newcommand{\cuplinf}{\bigcup\limits_{l=1}^\infty}
-\newcommand{\cupminf}{\bigcup\limits_{m=1}^\infty}
-\newcommand{\cupninf}{\bigcup\limits_{n=1}^\infty}
-\newcommand{\cuppinf}{\bigcup\limits_{p=1}^\infty}
-\newcommand{\cuprinf}{\bigcup\limits_{r=1}^\infty}
-\newcommand{\cupsinf}{\bigcup\limits_{s=1}^\infty}
-\newcommand{\cuptinf}{\bigcup\limits_{t=1}^\infty}
+\newcommand{\infcup}{\displaystyle\bigcup_{n=1}^\infty}
+\newcommand{\cuphinf}{\displaystyle\bigcup_{h=1}^\infty}
+\newcommand{\cupiinf}{\displaystyle\bigcup_{i=1}^\infty}
+\newcommand{\cupjinf}{\displaystyle\bigcup_{j=1}^\infty}
+\newcommand{\cupkinf}{\displaystyle\bigcup_{k=1}^\infty}
+\newcommand{\cuplinf}{\displaystyle\bigcup_{l=1}^\infty}
+\newcommand{\cupminf}{\displaystyle\bigcup_{m=1}^\infty}
+\newcommand{\cupninf}{\displaystyle\bigcup_{n=1}^\infty}
+\newcommand{\cuppinf}{\displaystyle\bigcup_{p=1}^\infty}
+\newcommand{\cuprinf}{\displaystyle\bigcup_{r=1}^\infty}
+\newcommand{\cupsinf}{\displaystyle\bigcup_{s=1}^\infty}
+\newcommand{\cuptinf}{\displaystyle\bigcup_{t=1}^\infty}
 
-\newcommand{\sumin}{\sum\limits_{i=1}^n}
-\newcommand{\sumjn}{\sum\limits_{j=1}^n}
-\newcommand{\sumkn}{\sum\limits_{k=1}^n}
+\newcommand{\sumin}{\displaystyle\sum_{i=1}^n}
+\newcommand{\sumim}{\displaystyle\sum_{i=1}^m}
+\newcommand{\sumik}{\displaystyle\sum_{i=1}^k}
+\newcommand{\sumjn}{\displaystyle\sum_{j=1}^n}
+\newcommand{\sumjm}{\displaystyle\sum_{j=1}^m}
+\newcommand{\sumjk}{\displaystyle\sum_{j=1}^k}
+\newcommand{\sumkn}{\displaystyle\sum_{k=1}^n}
+\newcommand{\sumkm}{\displaystyle\sum_{k=1}^m}
+\newcommand{\summn}{\displaystyle\sum_{m=1}^n}
+\newcommand{\sumnm}{\displaystyle\sum_{n=1}^m}
 
-\newcommand{\cupin}{\bigcup\limits_{i=1}^n}
-\newcommand{\cupim}{\bigcup\limits_{i=1}^m}
-\newcommand{\cupik}{\bigcup\limits_{i=1}^k}
-\newcommand{\cupjn}{\bigcup\limits_{j=1}^n}
-\newcommand{\cupjm}{\bigcup\limits_{j=1}^m}
-\newcommand{\cupjk}{\bigcup\limits_{j=1}^k}
-\newcommand{\cupnk}{\bigcup\limits_{n=1}^k}
-\newcommand{\cupnm}{\bigcup\limits_{n=1}^m}
-\newcommand{\cupkn}{\bigcup\limits_{k=1}^n}
-\newcommand{\cupkm}{\bigcup\limits_{k=1}^m}
+\newcommand{\cupin}{\displaystyle\bigcup_{i=1}^n}
+\newcommand{\cupim}{\displaystyle\bigcup_{i=1}^m}
+\newcommand{\cupik}{\displaystyle\bigcup_{i=1}^k}
+\newcommand{\cupjn}{\displaystyle\bigcup_{j=1}^n}
+\newcommand{\cupjm}{\displaystyle\bigcup_{j=1}^m}
+\newcommand{\cupjk}{\displaystyle\bigcup_{j=1}^k}
+\newcommand{\cupnk}{\displaystyle\bigcup_{n=1}^k}
+\newcommand{\cupnm}{\displaystyle\bigcup_{n=1}^m}
+\newcommand{\cupkn}{\displaystyle\bigcup_{k=1}^n}
+\newcommand{\cupkm}{\displaystyle\bigcup_{k=1}^m}
 
-\newcommand{\capin}{\bigcap\limits_{i=1}^n}
-\newcommand{\capim}{\bigcap\limits_{i=1}^m}
-\newcommand{\capik}{\bigcap\limits_{i=1}^k}
-\newcommand{\capjn}{\bigcap\limits_{j=1}^n}
-\newcommand{\capjm}{\bigcap\limits_{j=1}^m}
-\newcommand{\capjk}{\bigcap\limits_{j=1}^k}
-\newcommand{\capnk}{\bigcap\limits_{n=1}^k}
-\newcommand{\capnm}{\bigcap\limits_{n=1}^m}
-\newcommand{\capkn}{\bigcap\limits_{k=1}^n}
-\newcommand{\capkm}{\bigcap\limits_{k=1}^m}
+\newcommand{\capin}{\displaystyle\bigcap_{i=1}^n}
+\newcommand{\capim}{\displaystyle\bigcap_{i=1}^m}
+\newcommand{\capik}{\displaystyle\bigcap_{i=1}^k}
+\newcommand{\capjn}{\displaystyle\bigcap_{j=1}^n}
+\newcommand{\capjm}{\displaystyle\bigcap_{j=1}^m}
+\newcommand{\capjk}{\displaystyle\bigcap_{j=1}^k}
+\newcommand{\capnk}{\displaystyle\bigcap_{n=1}^k}
+\newcommand{\capnm}{\displaystyle\bigcap_{n=1}^m}
+\newcommand{\capkn}{\displaystyle\bigcap_{k=1}^n}
+\newcommand{\capkm}{\displaystyle\bigcap_{k=1}^m}
 
 \newcommand{\bcsl}{\symbol{92}}
 \newcommand{\infprod}{\prod\limits_{n=1}^\infty}
-\newcommand{\limninf}{\lim\limits_{n\to\infty}}
-\newcommand{\limxinf}{\lim\limits_{x\to\infty}}
-\newcommand{\limkinf}{\lim\limits_{k\to\infty}}
+\newcommand{\limninf}{\displaystyle\lim_{n\to\infty}}
+\newcommand{\limxinf}{\displaystyle\lim_{x\to\infty}}
+\newcommand{\limkinf}{\displaystyle\lim_{k\to\infty}}
 \newcommand{\limxx}{\lim_{x\to x_0}}
 \newcommand{\difx}{\dfrac{\mbox{d}}{\mbox{d}x}}
 \newcommand{\dift}{\dfrac{\mbox{d}}{\mbox{d}t}}
@@ -107,8 +114,8 @@
 \newcommand{\alev}{\mbox{ a.e.}}
 \newcommand{\emset}{\emptyset}
 \newcommand{\dint}{\displaystyle\int}
-\newcommand{\intab}{\int_a^b}
-\newcommand{\dintab}{\displaystyle\int_a^b}
+\newcommand{\dlim}{\displaystyle\lim}
+\newcommand{\intab}{\displaystyle\int_a^b}
 \newcommand{\dif}{\mbox{d}}
 \newcommand{\incto}{\nearrow}
 \newcommand{\decto}{\searrow}
@@ -127,7 +134,7 @@ This set of notes aims at being concise, comprehensive, and clear, to act as a c
 \subsubsection{Topological Properties of Sets in $\R$}
 \textbf{Definition: Open Set}
 
-$O\subset\R$ is open if for some open intervals $\{I_\alpha\}_{\alpha\in\Lambda}$, $O=\bigcup\limits_{\alpha\in\Lambda}I_\alpha$, where $\Lambda$ is some index set.
+$O\subset\R$ is open if for some open intervals $\{I_\alpha\}_{\alpha\in\Lambda}$, $O=\displaystyle\bigcup_{\alpha\in\Lambda}I_\alpha$, where $\Lambda$ is some index set.
 
 Equivalently, $O\subset\R$ is open if for all $x \in O,$ there exists $\delta > 0$ such that $(x - \delta, x + \delta) \subset O.$
 
@@ -173,14 +180,14 @@ $$A\subset\R,\forall\varepsilon>0,\exists\{I_n\}_{n\in\N^+}\st A\subset\bigcup_{
 $$\forall\{x_n\}_{n\in\N^+},\forall\varepsilon>0,I_n:=\left(x_n-\frac{\varepsilon}{2^{n+2}},x_n+\frac{\varepsilon}{2^{n+2}}\right)\implies\sum_{n=1}^\infty l(I_n)=\frac{\varepsilon}{2}<\varepsilon$$
 \textbf{Theorem:} Countable unions of Null sets are Null\\
 \textbf{Proof:}\\
-Suppose $N=\bigcup\limits_{n=1}^\infty N_n\st\forall N_n$ is Null, then each $N_n$ has cover $\{I_{n,k}\}_{n\in\N^+}\st\sum\limits_{k=1}^\infty l(I_{n,k})<\dfrac{\varepsilon}{2^n}$\\
-Clearly, $\bigcup\limits_{n,k\in\N^+}I_{n,k}$ is a cover of $N$ and $\sum\limits_{n,k\in\N^+}l(I_{n,k})=\sum\limits_{n=1}^\infty\sum\limits_{k=1}^\infty l(I_{n,k})=\varepsilon$\\
+Suppose $N=\displaystyle\bigcup_{n=1}^\infty N_n\st\forall N_n$ is Null, then each $N_n$ has cover $\{I_{n,k}\}_{n\in\N^+}\st\displaystyle\sum_{k=1}^\infty l(I_{n,k})<\dfrac{\varepsilon}{2^n}$\\
+Clearly, $\displaystyle\bigcup_{n,k\in\N^+}I_{n,k}$ is a cover of $N$ and $\displaystyle\sum_{n,k\in\N^+}l(I_{n,k})=\displaystyle\sum_{n=1}^\infty\displaystyle\sum_{k=1}^\infty l(I_{n,k})=\varepsilon$\\
 \textbf{Note:} Uncountable sets can be Null, such as the Cantor set. At each step of the Cantor set's construction, the total length of the covering decreases exponentially. 
 \subsection{Outer Measure}
 \textbf{Definition: Lebesgue Outer Measure}
 $$Z_A:=\left\{\sum_{n=1}^\infty l(I_n)\,\middle\vert\,A\subseteq\bigcup_{n=1}^\infty I_n\right\},\,m^*(A):=\inf Z_A$$
 Clearly, $\forall A\subset\R:m^*(A)\geq0$.\\
-When all the $\\sumninf l(I_n)$ in $Z_A$ diverge to $\infty$, we define $m^*(A)$ as $\infty$.\\
+When all the $\sumninf l(I_n)$ in $Z_A$ diverge to $\infty$, we define $m^*(A)$ as $\infty$.\\
 $\forall a\in\R$, define $a+\infty$ as $\infty$, $\infty+\infty:=\infty$, $0\times\infty:=0$\\
 Clearly, $Z_A=[r,+\infty]$ or $Z_A=(r,+\infty]$ or $Z_A=[\infty,\infty]=\{\infty\}$, and $A$ is Null$\iff m^*(A)=0$\\
 \textbf{Proposition:}
@@ -189,25 +196,25 @@ $A\subset B\implies m^*(A)\le m^*(B)$\\
 Clearly, $Z_B\subset Z_A\implies\inf Z_A\le\inf Z_B$\\
 \textbf{Theorem:} The outer measure of an interval equals its length$\equiv m^*(I)=l(I)$\\
 \textbf{Proof:}\\
-$I_1:=I,\forall n\geq2,I_n=[0,0]\implies\bigcup\limits_{n=1}^\infty I_n$ covers $I$, thus $m^*(I)\le l(I)$\\
-For bounded $I:\forall\varepsilon>0,\exists\{I_n\}\st\\sumninf l(I_n)\le m^*(I)+\dfrac{\varepsilon}{2}\land I\subset\infcup I_n$, let $a_n,b_n$ be the endpoints of $I_n$
+$I_1:=I,\forall n\geq2,I_n=[0,0]\implies\displaystyle\bigcup_{n=1}^\infty I_n$ covers $I$, thus $m^*(I)\le l(I)$\\
+For bounded $I:\forall\varepsilon>0,\exists\{I_n\}\st\sumninf l(I_n)\le m^*(I)+\dfrac{\varepsilon}{2}\land I\subset\infcup I_n$, let $a_n,b_n$ be the endpoints of $I_n$
 
 For bounded closed $I$:
 
 $J_n:=\left(a_n-\dfrac{\varepsilon}{2^{n+2}},b_n+\dfrac{\varepsilon}{2^{n+1}}\right)$, clearly, $\{J_n\}$ is an open cover of $I$, hence it has a finite subcover $\{J_n\}_{n=1}^m$.
 
 Clearly, the total length of this subcover is greater than the length of $I\implies$\\
-$$l(I)\le\sum\limits_{n=1}^m l(J_n)\le\\sumninf l(J_n)=\\sumninf l(I_n)+\dfrac{\varepsilon}{2}\le m^*(I)+\dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}=m^*(I)+\varepsilon$$
+$$l(I)\le\displaystyle\sum_{n=1}^m l(J_n)\le\sumninf l(J_n)=\sumninf l(I_n)+\dfrac{\varepsilon}{2}\le m^*(I)+\dfrac{\varepsilon}{2}+\dfrac{\varepsilon}{2}=m^*(I)+\varepsilon$$
 
 For bounded non-closed $I$, suppose $I=(a,b),\forall\varepsilon>0$, then:
 $$l((a,b))=l\left(\left[a+\dfrac{\varepsilon}{2},b-\dfrac{\varepsilon}{2}\right]\right)+\varepsilon\le m^*\left(\left[a+\dfrac{\varepsilon}{2},b-\dfrac{\varepsilon}{2}\right]\right)+\varepsilon\le m^*((a,b))+\varepsilon$$
 For unbounded $I$, a finite cover does not cover a subinterval of great enough length of $I$, hence does not cover $I$. $\square$\\
 \textbf{Theorem:} Sub-additivity
-$$\forall \{E_n\}:m^*\left(\infcup E_n\right)\le\\sumninf m^*(E_n)$$
+$$\forall \{E_n\}:m^*\left(\infcup E_n\right)\le\sumninf m^*(E_n)$$
 \textbf{Proof:}\\
-If $\\sumninf m^*(E_n)=\infty$ the the proposition is already true. So, suppose $\\sumninf m^*(E_n)\in\R^{\geq0}$, then
+If $\sumninf m^*(E_n)=\infty$ the the proposition is already true. So, suppose $\sumninf m^*(E_n)\in\R^{\geq0}$, then
 $$\forall\varepsilon,\exists\{I_k^n\}\st E_n\subset\bigcup_{k=1}^\infty I_k^n\land\sum_{k=1}^\infty l(I_k^n)\le m^*(E_n)+\frac{\varepsilon}{2^n}\implies$$
-$$\\sumninf m^*(E_n)+\varepsilon\geq\\sumninf\sum_{k=1}^\infty l(I_k^n)=\sum_{n,k\in\N^+}l(I_n^k)\geq m^*\left(\infcup E_n\right)$$
+$$\sumninf m^*(E_n)+\varepsilon\geq\sumninf\sum_{k=1}^\infty l(I_k^n)=\sum_{n,k\in\N^+}l(I_n^k)\geq m^*\left(\infcup E_n\right)$$
 \textbf{Note:} The outer measure is translation invariant because set containment is translation invariant
 \subsection{Lebesgue-Measurable Sets and Lebesgue Measure}
 \textbf{Definition: Lebesgue Measure}\\
@@ -225,10 +232,10 @@ Hence, $E\in\mathcal{M}\iff m^*(A)\geq m^*(A\cap E)+m^*(A\cap E^c)$\\
     1.\,&\forall\mbox{ Null }N:m^*(N)=0\implies\forall A\subset\R:\\
     &\,A\cap N\subset N\implies m^*(A\cap N)\le m^*(N)=0\\
     &\,A\cap N^c\subset A\implies m^*(A\cap N^c)\le m^*(A)\\
-    2.\,&\mbox{Let }I=[a,b]\mbox{ be an interval, }\forall A\subset\R,\forall\varepsilon>0,\exists\{I_n\}\st A\subset\infcup I_n\land m^*(A)\le\\sumninf l(I_n)\le m^*(A)+\varepsilon\\
-    &\,I_n':=I_n\cap[a,b]\implies A\cap[a,b]\subset\infcup I_n'\implies m^*(A\cap[a,b])\le\\sumninf l(I_n')\\
-    &\,I_n'':=I_n\cap(-\infty,a),I_n''':=I_n\cap(b,+\infty)\implies A\cap[a,b]^c\subset\infcup(I_n''\cup I_n''')\implies m^*(A\cap[a,b]^c)\le\\sumninf l(I_n'')+l(I_n''')\\
-    &\implies m^*(A\cap[a,b])+m^*(A\cap[a,b]^c)\le\\sumninf l(I_n')+l(I_n'')+l(I_n''')=\\sumninf l(I_n)\le m^*(A)+\varepsilon\quad\square
+    2.\,&\mbox{Let }I=[a,b]\mbox{ be an interval, }\forall A\subset\R,\forall\varepsilon>0,\exists\{I_n\}\st A\subset\infcup I_n\land m^*(A)\le\sumninf l(I_n)\le m^*(A)+\varepsilon\\
+    &\,I_n':=I_n\cap[a,b]\implies A\cap[a,b]\subset\infcup I_n'\implies m^*(A\cap[a,b])\le\sumninf l(I_n')\\
+    &\,I_n'':=I_n\cap(-\infty,a),I_n''':=I_n\cap(b,+\infty)\implies A\cap[a,b]^c\subset\infcup(I_n''\cup I_n''')\implies m^*(A\cap[a,b]^c)\le\sumninf l(I_n'')+l(I_n''')\\
+    &\implies m^*(A\cap[a,b])+m^*(A\cap[a,b]^c)\le\sumninf l(I_n')+l(I_n'')+l(I_n''')=\sumninf l(I_n)\le m^*(A)+\varepsilon\quad\square
 \end{split}
 \end{equation}
 The second proof holds as $I_n',I_n'',I_n'''$ are all intervals, thus the proof can be generalised slightly.\\
@@ -238,7 +245,7 @@ The second proof holds as $I_n',I_n'',I_n'''$ are all intervals, thus the proof 
     (1)\,&\R\in\mathcal{M}\\
     (2)\,&E\in\mathcal{M}\implies E^c\in\mathcal{M}\\
     (3)\,&\forall n\in\N^+:E_n\in\mathcal{M}\implies\infcup E_n\in\mathcal{M}\\
-    \mbox{(Countable Additivity)}\,&\forall m\neq n:E_m\cap E_n=\emptyset\implies m^*\left(\infcup E_n\right)=\\sumninf m^*(E_n)
+    \mbox{(Countable Additivity)}\,&\forall m\neq n:E_m\cap E_n=\emptyset\implies m^*\left(\infcup E_n\right)=\sumninf m^*(E_n)
 \end{split}
 \end{equation}
 Conditions (1)-(3) define a $\sigma$-field, a $\sigma$-field with countable additivity is a \textit{\textbf{measure space}}\\
@@ -266,7 +273,7 @@ Conditions (1)-(3) define a $\sigma$-field, a $\sigma$-field with countable addi
     &\quad\mbox{Take limit on both sides}:\quad(\mbox{the second inequality and second equation hold due to sub-additivity})\\
     &\quad m^*(A)\geq\sum_{k=1}^\infty m^*(A\cap E_k)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\geq m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)\right)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\\
     &\quad\implies m^*(A)=\sum_{k=1}^\infty m^*(A\cap E_k)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)=m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)\right)+m^*\left(A\cap\left(\bigcup_{k=1}^\infty E_k\right)^c\right)\\
-    &\quad\mbox{Substitute }A=\bigcup_{j=1}^\infty E_j\mbox{ into the first equality}\implies m^*\left(\infcup E_n\right)=\\sumninf m^*(E_n)\\
+    &\quad\mbox{Substitute }A=\bigcup_{j=1}^\infty E_j\mbox{ into the first equality}\implies m^*\left(\infcup E_n\right)=\sumninf m^*(E_n)\\
     (3)\,&\mbox{Initial Case:}\\
     &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c),m^*(A\cap E_1^c)=m^*(A\cap E_1^c\cap E_2)+m^*(A\cap E_1^c\cap E_2^c)\implies\\
     &\quad m^*(A)=m^*(A\cap E_1)+m^*(A\cap E_1^c\cap E_2)+m^*(A\cap E_1^c\cap E_2^c)\\
@@ -293,7 +300,7 @@ Apply the Axiom of Choice to construct set $E\subset[0,1]\st E$ contains exactly
 Enumerate the rationals in $[-1,1]$ into a sequence $(q_n)$. $E_n:=E+q_n$, clearly, $\infcup E_n\subset[-1,2]$\\
 We can see that $(E_n)$ is disjoint, as if $\exists a_\alpha+q_m\in E_m,a_\beta+q_n\in E_n\st a_\alpha+q_m=a_\beta+q_n$, then $a_\alpha-a_\beta=q_n-q_m\in\mathbb{Q}\implies a_\alpha,a_\beta$ are in the same equivalence class$\implies a_\alpha=a_\beta\implies q_n=q_m\implies m=n$\\
 $\forall a\in[0,1],\,a$ is in some equivalence class$\implies\exists b\in E\st a\sim b\implies a=b+q_k\in E_k\implies [0,1]\subset\infcup E_n\subset[-1,2]$
-$$\implies1=m^*([0,1])\le\\sumninf m^*(E_n)=\\sumninf m^*(E)\le3$$
+$$\implies1=m^*([0,1])\le\sumninf m^*(E_n)=\sumninf m^*(E)\le3$$
 However, the sum must be $0$ or $\infty$, hence $E$ must not be measurable.
 \subsection{Basic Properties of Lebesgue Measure}
 \textbf{Corollary:} $A\in\mathcal{M}\land m(A\Delta B)=0\implies B\in\mathcal{M}\land m(A)=m(B)$\\
@@ -317,13 +324,13 @@ $\implies m(A)=m(B)$\\
 \textbf{Proof:}
 \begin{equation}
 \begin{split}
-    (1)\,&\mbox{By definition of the outer measure, }\exists\mbox{ sequence of intervals }\{I_n\}\st A\subset\infcup I_n\mbox{ and }\\sumninf l(I_n)-\frac{\varepsilon}{2}\le m^*(A)\\
+    (1)\,&\mbox{By definition of the outer measure, }\exists\mbox{ sequence of intervals }\{I_n\}\st A\subset\infcup I_n\mbox{ and }\sumninf l(I_n)-\frac{\varepsilon}{2}\le m^*(A)\\
     &\mbox{Suppose the endpoints of }I_n\mbox{ are }a_n,b_n\mbox{, then }I_n\subset\left(a_n-\frac{\varepsilon}{2^{n+2}},b_n+\frac{\varepsilon}{2^{n+2}}\right)=:J_n, O:=\infcup J_n\mbox{ is open, then:}\\
-    &A\subset O\mbox{ and }m(O)\le\\sumninf l(J_n)=\\sumninf l(I_n)+\frac{\varepsilon}{2}\le m^*(A)+\varepsilon\\
+    &A\subset O\mbox{ and }m(O)\le\sumninf l(J_n)=\sumninf l(I_n)+\frac{\varepsilon}{2}\le m^*(A)+\varepsilon\\
     &\quad\mbox{If }m(E)<\infty\mbox{, then }0\le m(O\cap A)+m(O\cap A^c)-m(A)\le\varepsilon\implies0\le m(O\cap A^c)\le\varepsilon\\
     &\quad\mbox{If }m(E)=\infty\mbox{, then }E_n:=E\cap(-n,n)\mbox{ and }m(E_n)\mbox{ is finite}\implies\exists\mbox{ open }O_n\supset E_n\st m(O_n\symbol{92}E_n)\le\frac{\varepsilon}{2^n}\\
     &\quad O:=\infcup O_n\mbox{ is open and contains }E\implies O\symbol{92}E=\left(\infcup O_n\right){\symbol{92}}\left(\infcup E_n\right)\subset\infcup(O_n\symbol{92}E_n)\implies\\
-    &\quad m(O\symbol{92}E)\le\\sumninf m(O_n\symbol{92}E_n)\le\varepsilon\\
+    &\quad m(O\symbol{92}E)\le\sumninf m(O_n\symbol{92}E_n)\le\varepsilon\\
     (2)\,&\mbox{Trivially obtainable from (1)}
 \end{split}
 \end{equation}
@@ -598,6 +605,7 @@ $$\int_Eg_n\dif m=\int_{E\cap A}f_n\dif m+\int_{E\cap A^c}=\int_{E\cap A}f_n\dif
 \subsection{Integrable Function}
 \textbf{Definition:} If $E\in\mathcal{M}$ and for measurable function $f$, $\dint_Ef^+\dif m$ and $\dint_Ef^-\dif m$ are finite, then $f$ is \textit{\textbf{integrable}}
 $$\int_Ef\dif m:=\int_Ef^+\dif m-\int_Ef^-\dif m,\,\mathcal{L}^1(E):=\{f\mid f\mbox{ is integrable on }E\}$$
+\textbf{Corollary:} quite trivially, $f\in\mathcal{L}^1\iff|f|\in\mathcal{L}^1$\\
 \textbf{Proposition:} If $f,g$ are integrable and $f\le g$, then $\dint f\dif m\le\int g\dif m$\quad(Prove as an exercise)\\
 \textbf{Standard procedure for proofs for integral properties:}
 \begin{enumerate}
@@ -685,8 +693,127 @@ $\mu(A):=\dint_Af\dif m$, now we only have to prove countable additivity for $mu
 $$f\cdot\1_{\cupin E_i}\incto f\cdot \1_{\cupiinf E_i}\implies\int f\cdot\1_{\cupin E_i}\dif m\incto\int f\cdot\1_{\cupiinf E_i}\dif m=\dint_{\cupiinf E_i}f\dif m=\mu(\cupiinf E_i)$$
 $$\int f\cdot\1_{\cupin E_i}\dif m=\int_{\cupin E_i}f\dif m=\sumin\int_{E_i}f\dif m\incto\sumiinf\mu(E_i)\implies\mu(\cupiinf E_i)=\sumiinf\mu(E_i)\quad\square$$
 \subsection{Dominated Convergence Theorem}
+\textbf{Dominated Convergence Theorem (DCT):}\\
+Suppose measurable sequence $\{f_n\}$ is bounded by integrable function $g\alev$ on $E$ ($\forall n:|f_n|<g$), then
+$$\limninf\dint_Ef_n(x)\dif m=\int_E\limninf f_n\dif m$$
+\textbf{Proof:}\\
+Suppose $f_n\geq0$, then by Fatou's Lemma:
+\begin{equation}
+\begin{split}
+    (1)\,&\int_E\limninf f_n\dif m=\int_E\limninf\inf f_n\dif m\le\limninf\inf\int_Ef_n\dif m\\
+    (2)\,&\int_Eg\dif m-\int_E\limninf f_n\dif m=\int_E\limninf(g-f_n)\dif m=\int_E\limninf\inf(g-f_n)\dif m\\
+    &\le\limninf\inf\int_E(g-f_n)\dif m=\int_Eg\dif m-\limninf\sup\int_Ef_n\dif m\implies\limninf\sup\int_Ef_n\dif m\le\int_E\limninf f_n\dif m\\
+\end{split}
+\end{equation}
+Combine (1), (2) and we have the desired result.\\
+Now for the general case, we have $0\le f_n+g\le 2g$, applying the previous result to $f_n+g$ and trivially\quad$\square$\\
+\textbf{Example:} $f_n(x)=\dfrac{n\sin x}{1+n^2x^{\frac{1}{2}}},E=[0,1]$
+$$\forall x\in[0,1]:\limninf f_n(x)=0,\left|\frac{n\sin x}{1+n^2x^{\frac{1}{2}}}\right|\le\frac{n}{n^2x^\frac{1}{2}}\le\frac{1}{x^\frac{1}{2}}\mbox{ is integrable over }E\implies\int_{[0,1]}\limninf f_n(x)\dif m=0$$
+\textbf{Proposition:}\\
+Suppose $f$ is integrable, $g_n:=f\cdot\1_{[-n,n]},h_n:=\min\{f,n\}$, then $\dint|f-g_n|\dif m\to0,\dint|f-h_n|\dif m\to0$\\
+\textbf{Proof:} Trivial application of the DCT\\
+\textbf{Example:} $f_n=\limninf\dint_a^\infty\dfrac{n^2xe^{-n^2x^2}}{1+x^2}\dif x\,(a\geq0)$\\
+Substitute $u=nx\implies\dint_a^\infty\dfrac{n^2xe^{-n^2x^2}}{1+x^2}\dif x=\dint_{an}^\infty\dfrac{ue^{-u^2}}{1+(\frac{u}{n})^2}\dif u$
+\begin{equation}
+\begin{split}
+    (a=0)\,&\forall u\geq0:\frac{ue^{-u^2}}{1+(\frac{u}{n})^2}\incto ue^{-u^2}\implies\limninf\int_0^\infty\frac{ue^{-u^2}}{1+(\frac{u}{n})^2}\dif u=\dint_0^\infty\limninf\frac{ue^{-u^2}}{1+(\frac{u}{n})^2}\dif u=\int_0^\infty ue^{-u^2}\dif u=\frac{1}{2}\\
+    (a>0)\,&0\le\limninf\int_{an}^\infty\frac{ue^{-u^2}}{1+(\frac{u}{n})^2}\dif u\le\limninf\int_{an}^\infty ue^{-u^2}\dif u=0
+\end{split}
+\end{equation}
+\textbf{Example:} $f_n=\limninf\dint_0^\infty\dfrac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}\dif x$
+$$\left(1+\frac{x}{n}\right)^n=\left(\left(1+\frac{x}{n}\right)^{\frac{n}{x}}\right)^x\incto e^x,\begin{cases}
+    x^{\frac{1}{n}}\decto1&x>1\\
+    x^{\frac{1}{n}}\incto1&x<1
+\end{cases}\implies\dfrac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}\dif x\to\dfrac{1}{e^x}$$
+\begin{equation}
+\begin{split}
+    0<x\le1:&\frac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}\le\frac{1}{(1+x)\cdot x^{\frac{1}{2}}}<\frac{1}{\sqrt{x}}\\
+    x>1\land n\geq2:&\frac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}<\frac{1}{(1+\frac{x}{n})^n}\le\frac{1}{(1+\frac{x}{2})^2}\\
+\end{split}
+\end{equation}
+$$\implies|f_n|_{(n\geq2)}\le g:=\begin{cases}
+    \dfrac{1}{\sqrt{x}}&0<x\le1\\
+    \dfrac{1}{(1+\frac{x}{2})^2}&x>1
+\end{cases}\implies\limninf\int_0^\infty\dfrac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}\dif x=\int_0^\infty\frac{1}{e^x}\dif x=1$$
+\textbf{Proposition:} for non-measurable measurable sequence $\{f_n\}:\dint\sumninf f_n\dif m=\sumninf\dint f_n\dif m$\null\hfill{(Prove as an exercise)}
+\textbf{Beppo-Levi Theorem (BLT):}\\
+$\sumkinf\dint|f_k|\dif m$ is finite$\implies\sumkinf f_k$ converges a.e and $\dint\sumkinf f_k\dif m=\sumkinf\dint f_k\dif m$\\
+\textbf{Proof:}\\
+$\dint\sumkinf|f_k|\dif m=\sumkinf\dint|f_k(x)|\dif m$ is finite$\implies\sumkinf|f_k|$ is finite a.e. (hence is integrable)$\implies\sumkinf f_k$ converges a.e.\\
+$$\left|\sumkinf f_k\right|\le\sumkinf|f_k|\implies\limkinf\dint f_k\dif m\limninf\sumkn\dint f_k\dif m=\limninf\dint\sumkn f_k\dif m\xlongequal{\mbox{DCT}}\dint\limninf\sumkn f_k\dif m=\dint\sumninf f_k\dif m$$
+\textbf{Example:}
+\begin{equation}
+\begin{split}
+    (1)\,&\int_0^1\left(\frac{\ln x}{1-x}\right)^2\dif x\xlongequal{\sumkinf kx^{k-1}=\frac{1}{(1-x)^2}}\dint_0^1\sumninf nx^{n-1}(\ln x)^2\dif x\xlongequal{\mbox{BLT}}\sumninf n\dint x^{n-1}(\ln x)^2\dif x=2\sumninf\frac{1}{n^2}=\frac{\pi^2}{3}\\
+    (2)\,&\int_0^\infty\frac{x}{e^x-1}\dif x=\int_0^\infty x\cdot\frac{e^{-x}}{1-e^{-x}}\dif x=\int_0^\infty\sumninf xe^{-nx}\dif x=\sumninf\int_0^\infty xe^{-nx}\dif x=\sumninf\frac{1}{n^2}=\frac{\pi^2}{6}
+\end{split}
+\end{equation}
 \subsection{Relation to the Riemann Integral}
+\textbf{Theorem:} $f:[a,b]\to\R$, then\\
+Riemann Integrable$\iff f$ bounded, and continuous a.e. (Lebesgue)$\implies$ Riemann integral = Lebesgue integral\\
+\textbf{Proof:}
+$$\forall P:a=x_0<\cdots<x_n=b\mbox{, there is}$$
+\begin{equation}
+\begin{split}
+    \overline{S}(P)&=\sumin M_i\Delta x_i=\int_{[a,b]}\sumin M_i\cdot\1_{[x_{i-1},x_i]}\dif m=:\int_{[a,b]}\overline{s}(P)\dif m\\
+    \underline{S}(P)&=\sumin m_i\Delta x_i=\int_{[a,b]}\sumin m_i\cdot\1_{[x_{i-1},x_i]}\dif m=:\int_{[a,b]}\underline{s}(P)\dif m
+\end{split}
+\end{equation}
+$\forall\{P_n\}\st P_{n+1}$ adds new points to $P_n$ and $\max\{\Delta x_i\}\to0$, there is 
+$$\underline{s}(P_1)\le\underline{s}(P_2)\le\cdots\le f\le\cdots\le\overline{s}(P_2)\le\overline{s}(P_1)\implies\limninf\underline{s}(p_n)\le f\le\limninf\overline{s}(P_n)$$
+$$\implies\begin{cases}
+    \limninf\overline{S}(P_n)=\limninf\dint_{[a,b]}\overline{s}(P)\dif m\xlongequal{\mbox{MCT}}\dint_{[a,b]}\limninf\overline{s}(P_n)\dif m\\[8pt]
+    \limninf\underline{S}(P_n)=\limninf\dint_{[a,b]}\underline{s}(P)\dif m\xlongequal{\mbox{MCT}}\dint_{[a,b]}\limninf\underline{s}(P_n)\dif m
+\end{cases}$$
+\null\hfill{(0):\,$f$ is continuous at $x\iff\limninf\underline{s}(P_n)=f(x)=\limninf\overline{s}(P_n)$}\\
+$f$ is Riemann integrable$\implies$
+$$\int_{[a,b]}\limninf\underline{s}(P_n)\dif m=\inf_{[a,b]}\limninf\overline{s}(P_n)\dif m,\mbox{ from }\limninf\underline{s}(P_n)\le\limninf\overline{s}(P_n)\mbox{, we have }\limninf\underline{s}(P_n)=\limninf\overline{s}(P_n)\alev$$
+$$\implies\limninf\underline{s}(P_n)=f=\limninf\overline{s}(P_n)\alev\xRightarrow[(0)]{}f\mbox{ is continuous a.e.}$$
+$f$ is continuous a.e.$\xRightarrow[(0)]{}\limninf\underline{s}(P_n)=f=\limninf\overline{s}(P_n)\alev$
+$$\implies\int_{[a,b]}\limninf\underline{s}(P_n)\dif m=\int_{[a,b]}f\dif m=\int_{[a,b]}\limninf\overline{s}(P_n)\dif m=\int_a^bf\dif x$$
+\textbf{Proposition:} $\exists\dint_{-\infty}^{+\infty}f\dif x:=\dlim_{\substack{a\to-\infty\\b\to+\infty}}\int_a^bf\dif x\implies\forall[a,b]\subset\R:f\mbox{ is continuous}\alev$\quad(clearly)\\
+\textbf{Theorem:} $f\geq0\implies\dint_{-\infty}^{+\infty}f\dif x=\dint_\R f\dif m$\\
+\textbf{Proof:} $\dint_{[-n,n]}f\dif m=\dint_{-n}^nf\dif x\incto\dint_{-\infty}^{+\infty}f\dif x\mbox{ is finite}\implies\limninf\int_{[-n,n]}f\dif m=\begin{cases}
+    \dint_{-\infty}^{+\infty}f\dif x\\[8pt]
+    \dint_\R f\dif m
+\end{cases}$\\
+\textbf{Remark:} The other type of improper integrals can be dealt with in a similar fashion\null\hfill{Content missing}
 \subsection{Approximation of Measurable Functions}
+\textbf{Theorem:} $\forall$ bounded measurable $f:[a,b]\to\R,\forall\varepsilon>0,\exists$ step function $h\st\dint_a^b|f-h|\dif m\le\varepsilon$\\
+\textbf{Proof:}\\
+Assume $f\geq0$, then 
+$$\dint_{[a,b]}f\dif m=\sup\{\int_{[a,b]}\varphi\dif m\mid0\le\varphi\le f\mbox{, simple}\}\implies\exists\varphi\st\dint_{[a,b]}|f-\varphi|\dif m=\dint_{[a,b]}f\dif m-\dint_{[a,b]}\varphi\dif m\le\frac{\varepsilon}{2}$$
+Suppose $\varphi:[a,b]\to\{a_1,\dots,a_n\}$, then
+$$[a,b]=\cupin\varphi^{-1}(\{a_i\}),M:=\sup\{\varphi(x)\mid x\in[a,b]\}\implies\exists O_i\mbox{ open}\st E_i\subset O_i\land m(O_i)-m(E_i)\le\frac{\varepsilon}{2nM}$$
+$$O_i=\cupjinf I_{ij}\mbox{ disjoint}\implies m(\cupjk I_{ij})=\sumjk m(I_{ij})\incto\sumjinf m(I_{ij})=m(O_i)\implies\exists k_i\st m(O_i)-m(\bigcup_j^{k_i}I_{ij})\le\frac{\varepsilon}{2nM}$$
+$$G_i:=\cupjk I_{ij}\implies\int_{[a,b]}|\1_{E_i}-\1_{G_i}|\dif m\le m(E_i\Delta G_i)<\frac{\varepsilon}{nM}\quad(\mbox{set algebra skipped})$$
+$$h:=\sumin a_i\1_{G_i}\implies\int_{[a,b]}|f-h|\dif m\le\int_{[a,b]}|f-\varphi|\dif m+\int_{[a,b]}|\varphi-h|\dif m\le\frac{\varphi}{2}+\frac{\varphi}{2}=\varepsilon\quad(\mbox{arithmetic skipped})$$
+General case: $f^+,f^-$ can each be approximated arbitrarily closely by $h_1,h_2\implies$
+$$\dint_{[a,b]}|f-(h_1-h_2)|\dif m\le\dint_{[a,b]}|f^+-h_1|\dif m+\dint_{[a,b]}|f^--h_2|\dif m<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$
+\textbf{Theorem:} $\forall f\in\mathcal{L}^1,\forall\varepsilon>0:\exists$ continuous $g\st\dint|f-g|\dif m\le\varepsilon$\\
+\textbf{Proof:}\\
+Suppose $f$ is under the conditions of the last theorem, then
+$$n:=k_i,\mbox{ re-order }\{I_{ij}\}_{j\le k_i}\mbox{ into }\{J_n\}_{m\le n},J_m=(c_m,d_m)\implies h=\summn a_m\1_{J_m},K:=\max_{m\le n}\{|a_n|\}$$
+$$\varepsilon':=\min\left\{\frac{\varepsilon}{2nK},\min\{d_m-c_m\}\right\},g_m:=\begin{cases}
+    1&x\in(c_m+\dfrac{\varepsilon'}{4},d_m-\dfrac{\varepsilon'}{4})\\
+    0&x\notin J_m\\
+    \mbox{linear interpolation}&\mbox{otherwise}
+\end{cases}\mbox{ clearly, }g_m\mbox{ is continuous}$$
+$$g:=\summn a_mg_m\implies\int_{[a,b]}|h-g|\dif m\le\summn a_m\sum_{[a,b]}|1_{J_m}-g_m|\dif m<nK\cdot\frac{\varepsilon'}{2}<\frac{\varepsilon}{2}$$
+$$\implies\int_{[a,b]}|f-g|\dif m\le\int_{[a,b]}|f-h|\dif m+\int_{[a,b]}|h-g|\dif m<\varepsilon$$
+For unbounded $f\in\mathcal{L}^1([a,b])$, suppose it is non-negative, then
+$$f_n:=\min\{f,n\}\implies f_n\incto f\implies\forall\varepsilon>0,\exists N\st\int_{[a,b]}|f-f_N|\dif m\le\frac{\varepsilon}{2}$$
+$$\implies\exists\mbox{ continuus }g\st\int_{[a,b]}|f_N-g|\dif m<\frac{\varepsilon}{2}\implies\int_{[a,b]}|f-g|\dif m<\varepsilon\quad(\mbox{extends trivially to }\mathcal{L}^1([a,b]))$$
+$$\forall f\in\mathcal{L}^1\st f\geq0,\exists N\st\forall n>N:\int_{\{|x|\geq n\}}f\dif m\le\frac{\varepsilon}{3},\exists\mbox{ continuous }\int_{\{|x|\geq n\}}g\dif m<\frac{\varepsilon}{3}\st\int_{[-n,n]}|f-g|\dif m\le\frac{\varepsilon}{3}$$
+$$\implies\int_\R|f-g|\dif m\le\int_{[-n,n]}|f-g|\dif m+\int_{\{|x|\geq n\}}f\dif m+\int_{\{|x|\geq n\}}g\dif m<\varepsilon\quad(\mbox{extends trivially to }\mathcal{L}^1(\R))$$
+\textbf{Riemann-Lebesgue Lemma:}
+$$f\in\mathcal{L}^1(\R),s_k:=\dint_\R f(x)\sin kx\dif x,c_k:=\int_\R f(x)\cos kx\dif x\implies\limkinf s_k=\limkinf c_k=0$$
+\textbf{Proof:}
+$$s_k=\int_\R f(x+\frac{\pi}{k})\sin(kx+\pi)\dif x=-\int_\R f(x+\frac{\pi}{k}))\sin(kx)\dif x\implies$$
+$$\int_\R|f(x)-f(x+\frac{\pi}{k}|\dif x\geq\left|\int_\R(f(x)-f(x+\frac{\pi}{k})\sin(kx)\dif x\right|=2|s_k|$$
+$\exists$ continuous $g\st g(x)=0$ when $x\notin[a,b]$ and $\dint_\R|f-g|\dif m<\dfrac{\varepsilon}{3}$, for $\dfrac{\pi}{k}<1:g(x+\dfrac{\pi}{k})=0$ when $x\notin[a-1,b+1]$
+$$\implies|s_k|<\int_\R|f(x+\frac{\pi}{k})-f(x)|\dif m\le\int_\R|f(x+\frac{\pi}{k})-g(x+\frac{\pi}{k})|\dif m+\int_\R|g(x+\frac{\pi}{k})-g(x)|\dif m+\int_\R|g(x)-f(x)|\dif m<\varepsilon$$
+(for sufficiently large $k$)\null\hfill{$\square$}
 \clearpage
 \section{Spaces of Integrable Functions}
 \clearpage
@@ -696,4 +823,4 @@ $$\int f\cdot\1_{\cupin E_i}\dif m=\int_{\cupin E_i}f\dif m=\sumin\int_{E_i}f\di
 \clearpage
 \section{Limit Theorems}
 \clearpage
-\end{document}
+\end{document}/
