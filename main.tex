@@ -11,6 +11,7 @@
 \author{Zhikun Li}
 \date{}
 
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\E}{\mathbb{E}}
@@ -68,7 +69,9 @@
 \newcommand{\sumkn}{\displaystyle\sum_{k=1}^n}
 \newcommand{\sumkm}{\displaystyle\sum_{k=1}^m}
 \newcommand{\summn}{\displaystyle\sum_{m=1}^n}
+\newcommand{\summk}{\displaystyle\sum_{m=1}^k}
 \newcommand{\sumnm}{\displaystyle\sum_{n=1}^m}
+\newcommand{\sumnk}{\displaystyle\sum_{n=1}^k}
 
 \newcommand{\cupin}{\displaystyle\bigcup_{i=1}^n}
 \newcommand{\cupim}{\displaystyle\bigcup_{i=1}^m}
@@ -94,6 +97,7 @@
 
 \newcommand{\bcsl}{\symbol{92}}
 \newcommand{\infprod}{\prod\limits_{n=1}^\infty}
+\newcommand{\limiinf}{\displaystyle\lim_{i\to\infty}}
 \newcommand{\limninf}{\displaystyle\lim_{n\to\infty}}
 \newcommand{\limxinf}{\displaystyle\lim_{x\to\infty}}
 \newcommand{\limkinf}{\displaystyle\lim_{k\to\infty}}
@@ -735,12 +739,12 @@ $$\implies|f_n|_{(n\geq2)}\le g:=\begin{cases}
     \dfrac{1}{\sqrt{x}}&0<x\le1\\
     \dfrac{1}{(1+\frac{x}{2})^2}&x>1
 \end{cases}\implies\limninf\int_0^\infty\dfrac{1}{(1+\frac{x}{n})^n\cdot x^{\frac{1}{n}}}\dif x=\int_0^\infty\frac{1}{e^x}\dif x=1$$
-\textbf{Proposition:} for non-measurable measurable sequence $\{f_n\}:\dint\sumninf f_n\dif m=\sumninf\dint f_n\dif m$\null\hfill{(Prove as an exercise)}
+\textbf{Proposition:} for non-negative measurable sequence $\{f_n\}:\dint\sumninf f_n\dif m=\sumninf\dint f_n\dif m$\null\hfill{(Prove as an exercise)}
 \textbf{Beppo-Levi Theorem (BLT):}\\
 $\sumkinf\dint|f_k|\dif m$ is finite$\implies\sumkinf f_k$ converges a.e and $\dint\sumkinf f_k\dif m=\sumkinf\dint f_k\dif m$\\
 \textbf{Proof:}\\
-$\dint\sumkinf|f_k|\dif m=\sumkinf\dint|f_k(x)|\dif m$ is finite$\implies\sumkinf|f_k|$ is finite a.e. (hence is integrable)$\implies\sumkinf f_k$ converges a.e.\\
-$$\left|\sumkinf f_k\right|\le\sumkinf|f_k|\implies\limkinf\dint f_k\dif m\limninf\sumkn\dint f_k\dif m=\limninf\dint\sumkn f_k\dif m\xlongequal{\mbox{DCT}}\dint\limninf\sumkn f_k\dif m=\dint\sumninf f_k\dif m$$
+$\dint\sumkinf|f_k|\dif m=\sumkinf\dint|f_k|\dif m$ is finite$\implies\sumkinf|f_k|$ is finite a.e. (hence integrable a.e.)$\implies\sumkinf f_k$ converges a.e.
+$$\left|\sumkinf f_k\right|\le\sumkinf|f_k|\implies\sumkinf\dint f_k\dif m=\limninf\dint\sumkn f_k\dif m\xlongequal{\mbox{DCT}}\dint\limninf\sumkn f_k\dif m=\dint\sumkinf f_k\dif m$$
 \textbf{Example:}
 \begin{equation}
 \begin{split}
@@ -809,18 +813,192 @@ $$\implies\int_\R|f-g|\dif m\le\int_{[-n,n]}|f-g|\dif m+\int_{\{|x|\geq n\}}f\di
 \textbf{Riemann-Lebesgue Lemma:}
 $$f\in\mathcal{L}^1(\R),s_k:=\dint_\R f(x)\sin kx\dif x,c_k:=\int_\R f(x)\cos kx\dif x\implies\limkinf s_k=\limkinf c_k=0$$
 \textbf{Proof:}
-$$s_k=\int_\R f(x+\frac{\pi}{k})\sin(kx+\pi)\dif x=-\int_\R f(x+\frac{\pi}{k}))\sin(kx)\dif x\implies$$
-$$\int_\R|f(x)-f(x+\frac{\pi}{k}|\dif x\geq\left|\int_\R(f(x)-f(x+\frac{\pi}{k})\sin(kx)\dif x\right|=2|s_k|$$
+$$s_k=\int_\R f(x+\frac{\pi}{k})\sin(kx+\pi)\dif x=-\int_\R f(x+\frac{\pi}{k})\sin(kx)\dif x\implies$$
+$$\int_\R|f(x)-f(x+\frac{\pi}{k})|\dif x\geq\left|\int_\R(f(x)-f(x+\frac{\pi}{k}))\sin(kx)\dif x\right|=2|s_k|$$
 $\exists$ continuous $g\st g(x)=0$ when $x\notin[a,b]$ and $\dint_\R|f-g|\dif m<\dfrac{\varepsilon}{3}$, for $\dfrac{\pi}{k}<1:g(x+\dfrac{\pi}{k})=0$ when $x\notin[a-1,b+1]$
 $$\implies|s_k|<\int_\R|f(x+\frac{\pi}{k})-f(x)|\dif m\le\int_\R|f(x+\frac{\pi}{k})-g(x+\frac{\pi}{k})|\dif m+\int_\R|g(x+\frac{\pi}{k})-g(x)|\dif m+\int_\R|g(x)-f(x)|\dif m<\varepsilon$$
 (for sufficiently large $k$)\null\hfill{$\square$}
 \clearpage
 \section{Spaces of Integrable Functions}
+\textbf{Note:} The spaces we will be working with are all infinite dimensional. Simply consider $\mathcal{C}([a,b],\R)$\\
+A finite order polynomial can not be written as a linear combination of polynomials of lower order. Basis of $\mathcal{P}([a,b],\R):1,x,\dots,x^2$, hence it is infinite dimensional. Thus, $\mathcal{P}([a,b],\R)\subset\mathcal{C}([a,b],\R)\subset\mathcal{L}^1([a,b],\R)$
+We shall also extend the integral to the complex space by writing $f=u+iv$, naturally, $\dint_Ef\dif m=\dint_Eu\dif m+i\dint_Ev\dif m$
+\subsection{The Space $L^1$}
+\textbf{Definition: Metric}
+Let $X$ be a set, then any $d:X^2\to\R$ is a metric on $X$ and $(X,d)$ is a \textit{\textbf{metric space}}$\iff$
+\begin{equation}
+\begin{split}
+    \mbox{\textbf{Non-negativity}}\,&\forall x,y\in X:d(x,y)\geq0\\
+    \mbox{\textbf{Identical-0}}\,&d(x,y)=0\iff x=y\\
+    \mbox{\textbf{Commutativity}}\,&\forall x,y\in X:d(x,y)=d(y,x)\\
+    \mbox{\textbf{Triangle-inequality}}\,&d(x,z)\le d(x,y)+d(y,z)
+\end{split}
+\end{equation}
+\textbf{Definition: Norm}
+On vector space $X$ over $\R(\C),f:X\to||x||$ is a norm$\iff$
+\begin{equation}
+\begin{split}
+    \mbox{\textbf{Non-negativity}}&\,\forall x\in X:||x||\geq0\\
+    \mbox{\textbf{Identical-0}}&\,x=0\iff||x||=0\\
+    \mbox{\textbf{Absolute multiplicativity}}&\,||\alpha\cdot x||=|\alpha|\cdot||x||\\
+    \mbox{\textbf{Triangular Inequality}}&\,||x+y||\le||x||+||y||
+\end{split}
+\end{equation}
+$||\cdot||:x\mapsto||x||$ defines a metric by $d(x,y)=||x-y||$, the triangle inequality follows from
+$$||x-z||=||(x-y)+(y-z)||\le||x-y||+||y-z||$$
+To define a norm on $\mathcal{L}^1(E)$ with $E\subset\mathcal{M}(\R)$, we have to establish an equivalence class between functions which are equal a.e. to avoid non-identical 0s.\\
+\textbf{Definitions:} $$L^1(E):=\mathcal{L}^1(E)/_\equiv,f\equiv g:=f=g\alev,[f]:=\{f^*\in\mathcal{L}^1(E)\mid f^*=f\alev\}$$
+$$[f]+[g]:=[f+g],\forall a\in\R:a[f]:=[a\cdot f]\implies L^1(E)\mbox{ is a vector space}\quad\forall[f]\in L^1(E),||[f]||_1:=\int_E|f|\dif m$$
+This norm is well defined, as we have shown in previous chapters.\\
+From here on, we use $f$ and $[f]$ interchangeably to not obscure the underlying ideas with notation.\\
+\textbf{Definition: Cauchy Sequence}\\
+Let $X$ be a vector space with norm $||\cdot||_X,f_n\in X$ is cauchy if $\forall\varepsilon>0,\exists N\st\forall n>N:||f_n-f_m||_X<\varepsilon$\\
+If all Cauchy sequence in $X$ converge to an element of $X$, then $X$ is \textit{\textbf{complete}}.\\
+\textbf{Example:} $f_n:=\dfrac{1}{x^2}\1_{(0,n)}$
+$$||f_n-f_m||_1=\int_0^\infty\frac{1}{x^2}|\1_{(0,n)}-\1_{(0,m)}|\dif x\,(\mbox{WLoG, suppose }n\geq m)=\int_m^n\frac{1}{x^2}\dif x=\frac{1}{m}-\frac{1}{n}\to0\implies\{f_n\}\mbox{ is Cauchy}$$
+\textbf{Proposition:} The absolute convergence theorem is equivalent to the completeness theorems of $\R$\\
+We know that the Cauchy convergence theorem implies ACT, now we prove the other direction.\\
+\textbf{Proof:} Suppose $\{x_n\}\subset\R$ is Cauchy, then $\exists\{x_{n_k}\}\subset\{x_n\}\st\forall n\geq n_k:|x_n-x_{n_k}|\le2^{-k}$
+$$|x_{n_1}|+\sumik|x_{n_i}-x_{n_{i-1}}|<|x_{n_1}|+\sumik2^{-i}\to|x_{n_1}|+1\implies$$
+$$|x_{n_1}|+\sumik|x_{n_i}-x_{n_{i-1}}|\mbox{ converges}\xRightarrow{\mbox{ACT}}x_{n_k}=x_{n_i}+\sumik(x_{n_i}-x_{n_{i-1}})\mbox{ converges}$$
+\textbf{Theorem:} $L^1(E)$ is complete\\
+\textbf{Proof:}\\
+Suppose $f_n$ is Cauchy, then $\forall k,\exists N_k\st\forall n\geq N_k:||f_n-f_{N_k}||\le2^{-k}\implies$\\
+$\sumninf||f_{N_{k+1}}-f_{N_1}||_1$ is finite $\xRightarrow{\mbox{BLT}}\sumninf|f_{N_{n+1}}-f_{N_n}|$ converges a.e. $\xRightarrow{\mbox{ACT}}\sumninf(f_{N_{n+1}}-f_{N_n})$ converges a.e.$\implies$\\
+$f_{N_{k+1}}=f_{N_1}+\sumnk(f_{N_{n+1}}-f_{N_n})$ converges a.e., suppose it converges to $f$, then trivially, $f_n\to f$ point-wise a.e.
+$$\mbox{Now we prove convergence under }||\cdot||_1\mbox{ and }f\in L^1:\quad\forall\varepsilon>0,\exists N\st\forall m,n\geq N:||f_n-f_m||_1\le\varepsilon\implies$$
+$$||f-f_m||_1=\int|f-f_m|\dif m\le\limkinf\inf\int|f_{N_k}-f_m|\dif m=\limkinf\inf||f_{N_k}-f_m||_1<\varepsilon\implies$$
+$$||f-f_m||_1\to0\implies f-f_m\in[0]\subset L^1\implies f=(f-f_m)+f_m\in L^1\quad\null\square$$
+\subsection{The Hilbert Space $L^2$}
+\textbf{Definition:}
+$$||f||_2:=(\int_E|f|^2\dif m)^\frac{1}{2},\mathcal{L}^2(E):=\{f\in E\mbox{ is measurable}:||f||_2<\infty\}$$
+\null\hfill{Note: the modulus around $f$ keeps the integral real on complex spaces}\\
+\textbf{Definition:} $L^2(E):=\mathcal{L}^2(E)/_\equiv$ (same $\equiv$ as $L^1$)\\
+\textbf{Corollary:} $L^2(E)$ is a vector space\\
+\textbf{Proof:}
+To prove closure under addition, note $|f+g|^2\le2^2\max\{|f|^2,|g|^2\}\le4(|f|^2+|g|^2)\quad\square$
+\subsubsection{Properties of the $L^2$-norm}
+Non-negativity, identical-0 and absolute multiplicativity are immediate, now we prove the triangle inequality\\
+\textbf{Corollary:} $|\dint_\C f\dif m|\le\dint_\C|f|\dif m$\\
+\textbf{Proof:}
+$$|\int_\C f\dif m|=|\int_\C f_1+if_2\dif m|=|\int_\R f_1\dif m+i\int_\R f_2\dif m|=||\int_\R(f_1,f_2)\dif m||_\R\implies$$
+$$||\int_\R(f_1,f_2)\dif m||_\R^2=\int_\R\langle(f_1,f_2),\int_\R(f_1,f_2)\dif m\rangle\dif m\le\int_\R||(f_1,f_2)||_\R\cdot||\int_\R(f_1,f_2)\dif m||_\R\dif m$$
+$$=\int_\R||(f_1,f_2)||_\R\dif m\cdot||\int_\R(f_1,f_2)\dif m||_\R\implies||\int_\R(f_1,f_2)\dif m||_\R\le\int_\R||(f_1,f_2)||_\R\dif m\iff|\int_\C f\dif m|\le\int_\C|f|\dif m$$
+\textbf{Schwarz Inequality:} If $f,g\in L^2(E,\C)$, then $f\cdot g\in L^1(E,C)$ and $|\dint_Ef\cdot\overline{g}\dif m|\le||f\cdot g||_1\le||f||_2\cdot||g||_2$\\
+\textbf{Proof:}
+$$|\int_Ef\cdot\overline{g}\dif m|\le\int_E|f|\cdot|g|\dif m=||f\cdot g||_1$$
+Now $f$ for $|f|$, $g$ for $|g|$, and to avoid infinity $L^2$ norms, define
+$$f_n:=\min\{f,n\},g_n:=\{g,n\},E_k:=E\cap[-n,n]\implies$$
+$$\forall t\in\R:0\le\int_{E_k}(f_n+g_n)^2\dif m=\int_{E_k}f_n^2\dif m+2t\int_{E_k}f_ng_n\dif m+t^2\int_{E_k}g_n^2\dif m$$
+The above quadratic of $t$ is non-negative, hence can not have two distinct solutions. Taking the determinant:
+$$(\int_{E_k}f_n\cdot g_n\dif m)^2\le\int_{E_k}f_n^2\dif m\cdot\int_{E_k}g_n^2\dif m\le\int_{E_k}|f|^2\dif m\cdot\int_{E_k}|g|^2\dif m=||f||_2^2\cdot||g||_2^2\xRightarrow{\mbox{MCT}}(\int_Ef\cdot g\dif m)^2\le||f||_2^2\cdot||g||_2^2$$
+\textbf{Triangle Inequality} for $L^2(E,\C)$\\
+\textbf{Proof:}
+\begin{equation}
+\begin{split}
+    ||f+g||_2^2&=\int_E|f+g|^2\dif m=\int_E(f+g)\overline{(f+g)}\dif m\\
+    &=\int_E|f|^2\dif m+\int_Ef\cdot\overline{g}+\overline{f}\cdot g\dif m+\int_E|g|^2\dif m\le||f||_2^2+2||f||_2\cdot||g||_2+||g||_2^2=(||f||_2+||g||_2)^2
+\end{split}
+\end{equation}
+A more general proof for the completeness of $||\cdot||_p$ norm will be provided in the next subsection.\\
+\textbf{Note:} $L^1\not\subset L^2\land L^2\not\subset L^1$\\
+\textbf{Example:}
+\begin{equation}
+\begin{split}
+    E=[1,\infty),f=\frac{1}{x}\implies f\in L^2(E)\land f\notin L^1(E)\\
+    F=(0,1),g=\frac{1}{\sqrt{x}}\implies g\in L^1(E)\land f\notin L^2(E)
+\end{split}
+\end{equation}
+\textbf{Proposition:} $m(D)\le\infty\implies L^2(D)\subset L^1(D)$\\
+\textbf{Proof:} $f\in L^2(E)\implies\dint_D|f|^2\dif m$ is finite$\implies|f|$ is finite a.e.$\implies\dint_D|f|\dif m$ is finite$\implies f\in L^1(D)$
+\subsubsection{Inner Product Spaces}
+\textbf{Definitions:} $\forall f,g\in L^2(E,\C),\langle f,g\rangle:=\dint f\cdot\overline{g}\dif m\implies\sqrt{\langle f,f\rangle}=(\dint_Ef\cdot\overline{f}\dif m)^\frac{1}{2}=(\dint_E|f|^2\dif m)^\frac{1}{2}=||f||_2$\\
+The conjugate linearity, conjugate symmetry, and positive definiteness $(\langle f,f\rangle)\geq0$ are trivially true. Hence, $L^2$ is a inner product space with respect to the inner-product generated by its norm.\\
+The following are hence immediate:\\
+\textbf{Identities:}\\
+\begin{equation}
+\begin{split}
+    \mbox{\textbf{Parallelogram Law:}}\,&||h_1+h_2||^2+||h_1-h_2||^2=2(||h_1||^2+||h_2||^2)\\
+    \mbox{\textbf{Polarisation Identity:}}\,&\langle h_1,h_2\rangle=\frac{1}{4}\cdot\left(||h_1+h_2||^2-||h_1-h_2||^2+i\cdot\left(||h_1+ih_2||^2-||h_1-ih_2||^2\right)\right)
+\end{split}
+\end{equation}
+\textbf{Definition:}
+\quad\textbf{Banach Spaces:} vector spaces complete under their corresponding norms\\
+\quad\textbf{Hilbert Spaces:} Banach spaces whose norms are induced by their inner product\\
+\textbf{Corollary:} (proof not provided)\\
+Hilbert spaces are precisely the spaces where the parallelogram law holds, the inner-product is then recovered from the norm via the polarisation identity.\\
+\textbf{Example:} $L^1([0,1])$ is not a Hilbert space. To see this, put $h_1=x-\frac{1}{2},h_2=\frac{1}{2}$ through the parallelogram law\\
+\subsubsection{Orthogonality and Projections}
+\textbf{Definition:} $\cos\theta=\dfrac{\langle g,h\rangle}{||g||\cdot||h||}$\\
+\textbf{Theorem:} Let $K$ be a complete subspace of the Hilbert space $H$, then $\forall h\in H,\exists! h'\in K\st\forall k\in K:\langle h-h',k\rangle=0$. Or equivalently: $||h-h'||=\inf\{||h-k||:k\in K\}$\\
+\textbf{Proof:} We begin with proving the equivalence between the two conditions
+$$\forall k\in K:\langle h-h',k\rangle=0\implies||h-k||^2=||(h-h')+(h'-k)||^2=||h-h'||^2+||h'-k||^2\geq||h-h'||^2$$
+$$||h-h'||=\inf\{||h-k||\}\implies\forall t\in\R,\forall k\in K:||h-(h'+tk)||^2\geq||h-h'||^2\implies t^2||k||^2-2t\mbox{Re}\langle h-h',k\rangle\geq0$$
+After basic quadratic manipulation, we have: 
+$$\mbox{Re}\langle h-h',k\rangle=0\implies\forall k\in K:0=\mbox{Re}\langle h-h',-ik\rangle=\mbox{Im}\langle h-h',k\rangle\implies\langle h-h',k\rangle=0$$
+We now prove the existence of $h'$\\
+Choose $\{k_n\}\subset K\st||h-k_n||\to\inf\{||h-k||:k\in K\}$, apply the parallelogram law:
+$$||h-k_n||^2+||h-k_m||^2=2\left(||h-\frac{1}{2}(k_m+k_n)||^2+||\frac{1}{2}(k_m-k_n)||^2\right)$$
+LHS $\to2(\inf\{||h-k||\})^2$, RHS $\geq2(\inf\{||h-k||\})^2\implies||k_m-k_n||\to0$, hence $\{k_n\}$ is Cauchy, converges to some $h'$
+$$\inf\{||h-k||\}\le||h-h'||\le||h-k_n||+||k_n-h'||\to\inf\{||h-k||\}\implies||h-h'||=\inf\{||h-k||\}$$
+\subsection{The $L^p$ Spaces: Completeness}
+\textbf{Definitions:} $\forall p\in\N^{\geq1},L^p:=\{f:\dint_E|f|^p\dif m<\infty\},||f||_p:=(\dint_E|f|^p\dif m)^\frac{1}{p}$\\
+$f$ is \textit{\textbf{Essentially bounded}} if $\esssup|f|\le\infty,L^\infty(E):=\{f:f$ is essentially bounded$\},||f||_\infty:=\esssup f$\\
+Clearly, $\forall p,L^p(E)$ is a vector space, most norm conditions also stand trivially. The non-trivial properties are the triangle inequality completeness under the corresponding norm.\\
+\textbf{Triangle Inequality}\\
+\textbf{Proof:} For $L^\infty:|f+g|\le|f|+|g|\implies||f+g||_\infty\le||f||_\infty+||g||_\infty$, now we look at $L^p$:\\
+\textbf{Hölder's Inequality:} 
+\begin{equation}
+\begin{split}
+    (1)\,&\forall x,y\in\R^{\geq0},\forall\alpha,\beta\in(0,1)\st\alpha+\beta=1:x^\alpha y^\beta\le\alpha x+\beta y\\
+    (2)\,&\forall p,q\in\R^{>1}\st\frac{1}{p}+\frac{1}{q}=1:\int|f\cdot\overline{g}|\dif m\le(\int|f|^p\dif m)^\frac{1}{p}\cdot(\int|g|^q\dif m)^\frac{1}{q}\iff||f\cdot g||_1\le||f||_p\cdot||g||_q
+\end{split}
+\end{equation}
+We have proved this inequality previously in ``Classical Real Analysis", now we provide a different proof\\
+\textbf{Proof(1):} When $x=0$, the claim is obvious, we take $x>0$:
+$$f(t):=(1-\beta)+\beta t-t^\beta\,(t\in[0,\infty]),f'(t)=\beta(1-t^{\beta-1})\begin{cases}
+    <0&t\in(0,1)\\
+    >0&t\in[0,\infty)
+\end{cases}$$
+Hence $f(1)=0$ is the only minimum on $[0,\infty)\implies f(t)\geq0$ Let $t$ be $\dfrac{x}{y}$ then trivially\quad$\square$\\
+\textbf{Proof(2):} Assume that $||f||_p=||g||_q=1$, this can be done by dividing on both sides. Hence, we only have to show that $||f,g||_1\le1$
+$$|f\cdot\overline{g}|=(|f|^p)^\frac{1}{p}(|g|^q)^\frac{1}{q}\le\frac{1}{p}|f|^p+\frac{1}{q}|g|^q\implies\int|f\cdot\overline{g}|\dif m\le\frac{1}{p}\int|f|^p\dif m+\frac{1}{q}\int|g|^q\dif m=\frac{1}{p}+\frac{1}{q}=1$$
+\textbf{Note:} $L^\infty$ is not a Hilbert space, take $h_1=0,h_2=x-1$ for the parallelogram law.\\
+\textbf{Minkowski's Inequality:} $\forall p\geq1,\forall f,g\in L^p(E):||f+g||_p\le||f||_p+||g||_p$\\
+\textbf{Proof:}\\
+Suppose $1<p<\infty$, we have: $|f+g|^p\le|f|\cdot|f+g|^{p-1}+|g|\cdot|f+g|^{p-1}$\\
+Take $q\st\dfrac{1}{p}+\dfrac{1}{q}=1$, there is $|f+g|^{(p-1)q}=|f+g|^p\le\infty\implies(f+g)^{p-1}\in L^q$\\
+$$\implies(\int|f+g|^p\dif m)^{\frac{1}{p}+\frac{1}{q}}=\int|f+g|^p\dif m\le\int|f|\cdot|f+g|^{p-1}\dif m+\int|g|\cdot|f+g|^{p-1}\dif m$$
+$$\le(\int|f|^p\dif m)^\frac{1}{p}(\int|f+g|^{(p-1)q}\dif m)^\frac{1}{q}+(\int|g|\dif m)^\frac{1}{p}(\int|f+g|^{(p-1)q}\dif m)^\frac{1}{q}$$
+$$=(\int|f+g|^p\dif m)^\frac{1}{q}\left((\int|f|^p\dif m)^\frac{1}{p}+(\int|g|^p\dif m)^\frac{1}{p}\right)\implies(\int|f+g|^p\dif m)^\frac{1}{p}\le(\int|f|^p\dif m)^\frac{1}{p}+(\int|g|^p\dif m)^\frac{1}{p}\quad\square$$
+\textbf{Completeness Theorem of the $L^p$ Norm}\\
+\textbf{Proof:} Suppose $f_n$ is Cauchy, then $\exists n_k\st\forall n\geq n_k:||f_n-f_{n_k}||v$
+$$\implies\int(\sumiinf|f_{n_{i+1}}-f_{n_i}|)^p\dif m=\int\limkinf(\sumik|f_{n_{i+1}}-f_{n_i}|)^p\dif m\le\limkinf\inf\int(\sumik|f_{n_{i+1}}-f_{n_i})^p\dif m$$
+$$=\left|\left|\sumik|f_{n_{i+1}}-f_{n_i}|\right|\right|_p^p\le(\sumik||f_{n_{i+1}}-f_{n_i}||_p)^p<1\implies\sumiinf|f_{n_{i+1}}-f_{n_i}|\mbox{ is finite a.e.}$$
+Note: We are using Fatou instead of BLT as the summation operation can not be extracted from the $p$th power
+$$\implies f_{n_k}=f_{n_1}+\sumik(f_{n_{i+1}}-f_{n_i})\to f\alev$$
+$$||f-f_m||_p^p=\int|f-f_m|^p\dif m\le\limiinf\inf\int|f_{n_i}-f_m|^p\dif m\le\varepsilon^p\implies f-f_m\in L^p\implies f=f_m+(f-f_m)\in L^p\quad\square$$
+\textbf{Theorem:} $m(E)<\infty\implies\forall 1\le p\le q\le\infty:L^p(E)\subset L^p(E)$\\
+\textbf{Proof:}
+$$|f(x)|^p\le1+|f(x)|^q\implies\int_E|f|^p\dif m\le\int_E1\dif m+\int_E|f|^q\dif m=m(E)+\int_E|f|^q\dif m$$
+Hence if $\dint_E|f|^q\dif m$ is finite, then $\dint_E|f|^p\dif m$ is finite\quad$\square$
 \clearpage
 \section{Product Measures}
+\subsection{Multi-dimensional Lebesgue Measure}
+\subsection{Product $\sigma$-fields}
+\subsection{Construction of the Product Measure}
+\subsection{Fubini's Theorem}
 \clearpage
 \section{The Radon-Nikodym Theorem}
+\subsection{Densities and Conditioning}
+\subsection{Lebesgue-Stieltjes Measures}
+\subsubsection{Construction of Lebesgue-Stieltjes Measures}
+\subsubsection{Absolute Continuity of Functions}
+\subsubsection{Functions of Bounded Variation}
+\subsubsection{Hahn-Jordan Decomposition}
+\subsubsection{Signed Measures}
 \clearpage
 \section{Limit Theorems}
+\subsection{Modes of Convergence}
 \clearpage
 \end{document}/
